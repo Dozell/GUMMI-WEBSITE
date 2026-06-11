@@ -6,10 +6,10 @@ import { motion } from 'framer-motion';
 const CANVAS_SIZE = 600;
 
 const DEFAULT_MASCOTS = [
-  { label: 'Classic',  src: '/mascot-main.png',  bg: '#ffffff' },
-  { label: 'Dancing',  src: '/mascot-dance.png', bg: '#000000' },
-  { label: 'Flexing',  src: '/mascot-flex.png',  bg: '#ffffff' },
-  { label: 'Singing',  src: '/mascot-sing.png',  bg: '#cccccc' },
+  { label: 'Hero',      src: '/gummi-mascot-hero.png',      bg: '#0d150d' },
+  { label: 'Singing',   src: '/gummi-mascot-singing.jpg',   bg: '#ffffff' },
+  { label: 'Skate',     src: '/gummi-mascot-skateboard.png', bg: '#0d150d' },
+  { label: 'Thumbs Up', src: '/gummi-mascot-thumbsup.jpg',  bg: '#ffffff' },
 ];
 
 function drawMeme({ canvas, imageSrc, topText, bottomText, bgColor }) {
