@@ -11,34 +11,26 @@ const navLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#030806] border-t border-green-500/10">
+    <footer className="bg-[#080f08] border-t border-green-500/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
 
         <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-8 mb-10">
-
-          {/* Brand */}
           <div className="flex flex-col items-center md:items-start gap-3">
-            <span className="font-display font-bold text-2xl text-green-400">$GUMMI</span>
             <Image
-              src="/logo.jpg"
+              src="/gummi-logo-official.png"
               alt="Gummibär"
-              width={90}
-              height={30}
-              className="rounded-lg opacity-40"
+              width={120}
+              height={40}
+              className="h-9 w-auto object-contain opacity-70"
             />
             <p className="text-white/25 text-xs max-w-[200px] text-center md:text-left leading-relaxed">
-              The sweetest meme coin on Solana. 100% fan-made.
+              The internet&apos;s favourite green bear, back on Solana. 100% fan-made.
             </p>
           </div>
 
-          {/* Nav */}
           <nav className="flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-2">
             {navLinks.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                className="text-white/25 hover:text-green-400 text-sm font-semibold transition-colors"
-              >
+              <a key={l.href} href={l.href} className="text-white/25 hover:text-green-400 text-sm font-semibold transition-colors">
                 {l.label}
               </a>
             ))}
@@ -49,8 +41,8 @@ export default function Footer() {
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
           <p className="text-white/18 text-xs leading-relaxed max-w-xl">
-            $GUMMI is a fan-made meme coin. Not affiliated with the original Gummibär brand,
-            creators, or rights holders. Not financial advice. For entertainment only.
+            $GUMMI is a fan-made meme coin. Not affiliated with the original Gummibär brand, creators, or rights holders.
+            Not financial advice. For entertainment only.
           </p>
           <div className="flex items-center gap-1.5 text-white/18 text-xs shrink-0">
             <span>Built on</span>

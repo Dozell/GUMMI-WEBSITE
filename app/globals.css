@@ -3,19 +3,19 @@
 
 /* ── Brand tokens ─────────────────────────────────────── */
 :root {
-  --green:       #4ade80;
-  --green-bright:#22c55e;
-  --green-dim:   #15803d;
-  --bg:          #050a05;
-  --bg-alt:      #080f08;
-  --bg-card:     rgba(74,222,128,0.04);
-  --bg-light:    #edf7ed;
+  --green:        #4ade80;
+  --green-bright: #22c55e;
+  --green-glow:   rgba(74, 222, 128, 0.30);
+  --bg:           #0d150d;
+  --bg-alt:       #111d11;
+  --bg-card:      rgba(74, 222, 128, 0.05);
+  --bg-light:     #eef7ee;
 }
 
 html { scroll-behavior: smooth; }
 
 body {
-  background: #050a05;
+  background: #0d150d;
   color: #ffffff;
   font-family: 'Nunito', sans-serif;
   overflow-x: hidden;
@@ -23,18 +23,26 @@ body {
 
 .font-display { font-family: 'Fredoka', sans-serif; }
 
-/* ── Gradient text ─────────────────────────────────────── */
-.gradient-text-green {
-  background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* ── Text helpers ─────────────────────────────────────── */
+.text-green-glow {
+  color: #4ade80;
+  text-shadow: 0 0 24px rgba(74,222,128,0.55), 0 0 60px rgba(74,222,128,0.25);
 }
 
 /* ── Dot grid ─────────────────────────────────────────── */
 .bg-pattern {
-  background-image: radial-gradient(circle, rgba(74,222,128,0.09) 1px, transparent 1px);
-  background-size: 26px 26px;
+  background-image: radial-gradient(circle, rgba(74,222,128,0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* ── Neon ring ────────────────────────────────────────── */
+.neon-ring {
+  border: 2px solid rgba(74,222,128,0.50);
+  box-shadow:
+    0 0 28px  rgba(74,222,128,0.40),
+    0 0 70px  rgba(74,222,128,0.18),
+    0 0 140px rgba(74,222,128,0.08),
+    inset 0 0 36px rgba(74,222,128,0.07);
 }
 
 /* ── Keyframes ────────────────────────────────────────── */
@@ -44,38 +52,42 @@ body {
 }
 @keyframes blob {
   0%,100% { transform: translate(0,0) scale(1); }
-  33%      { transform: translate(22px,-32px) scale(1.05); }
-  66%      { transform: translate(-16px,16px) scale(0.95); }
+  33%      { transform: translate(24px,-34px) scale(1.05); }
+  66%      { transform: translate(-18px,18px) scale(0.95); }
 }
 @keyframes bearBounce {
-  0%   { transform: translateY(0px)   rotate(0deg); }
-  20%  { transform: translateY(-16px) rotate(2deg); }
-  40%  { transform: translateY(-6px)  rotate(0deg); }
-  60%  { transform: translateY(-16px) rotate(-2deg); }
+  0%   { transform: translateY(0)   rotate(0deg); }
+  20%  { transform: translateY(-18px) rotate(2deg); }
+  40%  { transform: translateY(-7px)  rotate(0deg); }
+  60%  { transform: translateY(-18px) rotate(-2deg); }
   80%  { transform: translateY(-4px)  rotate(0deg); }
-  100% { transform: translateY(0px)   rotate(0deg); }
+  100% { transform: translateY(0)   rotate(0deg); }
 }
 @keyframes pulseGlow {
-  0%,100% { opacity: 0.5; transform: scale(1); }
-  50%      { opacity: 0.85; transform: scale(1.06); }
+  0%,100% { opacity: 0.45; transform: scale(1); }
+  50%      { opacity: 0.80; transform: scale(1.07); }
 }
 @keyframes floatY {
   0%,100% { transform: translateY(0); }
-  50%      { transform: translateY(-12px); }
+  50%      { transform: translateY(-14px); }
 }
 @keyframes floatRotate {
   0%,100% { transform: translateY(0) rotate(0deg); }
-  33%      { transform: translateY(-8px) rotate(8deg); }
-  66%      { transform: translateY(-4px) rotate(-6deg); }
+  33%      { transform: translateY(-9px) rotate(9deg); }
+  66%      { transform: translateY(-4px) rotate(-7deg); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
 }
 
 /* ── Utility classes ─────────────────────────────────── */
-.animate-ticker       { animation: ticker 28s linear infinite; }
-.animate-blob         { animation: blob 8s infinite ease-in-out; }
-.animate-bear-bounce  { animation: bearBounce 3.4s ease-in-out infinite; }
-.animate-pulse-glow   { animation: pulseGlow 3s ease-in-out infinite; }
-.animate-float-y      { animation: floatY 3s ease-in-out infinite; }
-.animate-float-rotate { animation: floatRotate 4s ease-in-out infinite; }
+.animate-ticker       { animation: ticker 30s linear infinite; }
+.animate-blob         { animation: blob 9s infinite ease-in-out; }
+.animate-bear-bounce  { animation: bearBounce 3.6s ease-in-out infinite; }
+.animate-pulse-glow   { animation: pulseGlow 3.2s ease-in-out infinite; }
+.animate-float-y      { animation: floatY 3.2s ease-in-out infinite; }
+.animate-float-rotate { animation: floatRotate 4.2s ease-in-out infinite; }
 
 .animation-delay-500  { animation-delay: 0.5s; }
 .animation-delay-1000 { animation-delay: 1s; }
@@ -84,17 +96,7 @@ body {
 .animation-delay-2500 { animation-delay: 2.5s; }
 .animation-delay-4000 { animation-delay: 4s; }
 
-/* ── Neon circle glow ────────────────────────────────── */
-.neon-ring {
-  border: 2.5px solid rgba(74,222,128,0.55);
-  box-shadow:
-    0 0 30px  rgba(74,222,128,0.35),
-    0 0 80px  rgba(74,222,128,0.18),
-    0 0 160px rgba(74,222,128,0.08),
-    inset 0 0 40px rgba(74,222,128,0.06);
-}
-
 /* ── Scrollbar ───────────────────────────────────────── */
 ::-webkit-scrollbar        { width: 6px; }
-::-webkit-scrollbar-track  { background: #050a05; }
+::-webkit-scrollbar-track  { background: #0d150d; }
 ::-webkit-scrollbar-thumb  { background: #4ade80; border-radius: 3px; }
