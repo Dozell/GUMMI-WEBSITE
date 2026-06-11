@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
+import BrandLockup from './BrandLockup';
 
 const TICKER =
   '🐻 GUMMIBÄR IS BACK AFTER 19 YEARS!  •  🍬 100% FAN-MADE  •  ON SOLANA  •  ⚡ PURE NOSTALGIA  •  🎵 COMMUNITY DRIVEN  •  🚀 NO ROADMAP, JUST VIBES  •  ';
@@ -81,16 +81,9 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-4">
 
-          {/* Logo */}
-          <a href="#hero" className="shrink-0 flex items-center">
-            <Image
-              src="/gummi-logo-official.png"
-              alt="Gummibär"
-              width={130}
-              height={44}
-              className="h-9 w-auto object-contain"
-              priority
-            />
+          {/* Brand lockup */}
+          <a href="#hero" className="shrink-0">
+            <BrandLockup iconSize={32} logoHeight={36} priority />
           </a>
 
           {/* Desktop links */}

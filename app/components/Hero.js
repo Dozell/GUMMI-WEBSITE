@@ -202,21 +202,6 @@ export default function Hero() {
               </motion.span>
             ))}
 
-            {/* Head badge — black bg blends on dark site */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1.1, duration: 0.5, type: 'spring' }}
-              className="absolute -bottom-4 -left-4 sm:-bottom-2 sm:-left-8 z-20"
-            >
-              <Image
-                src="/gummi-mascot-head.jpg"
-                alt=""
-                width={72}
-                height={72}
-                className="w-14 sm:w-16 h-14 sm:h-16 rounded-full border-2 border-green-400/40"
-              />
-            </motion.div>
           </motion.div>
         </div>
       </div>

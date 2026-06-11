@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import BrandLockup from './BrandLockup';
 
 const navLinks = [
   { label: 'Memory Lane',  href: '#memory' },
@@ -16,13 +16,7 @@ export default function Footer() {
 
         <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-8 mb-7">
           <div className="flex flex-col items-center md:items-start gap-3">
-            <Image
-              src="/gummi-logo-official.png"
-              alt="Gummibär"
-              width={120}
-              height={40}
-              className="h-9 w-auto object-contain opacity-90"
-            />
+            <BrandLockup iconSize={30} logoHeight={34} opacity={0.9} />
             <p className="text-white/40 text-xs max-w-[200px] text-center md:text-left leading-relaxed">
               The internet&apos;s favourite green bear, back on Solana. 100% fan-made.
             </p>

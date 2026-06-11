@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import BrandLockup from './BrandLockup';
 
 /*
  * TO GO LIVE: Remove `soon: true` from a card and set its href to the real URL.
@@ -57,6 +58,9 @@ export default function Community() {
             transition={{ duration: 0.7 }}
             className="text-center lg:text-left"
           >
+            <div className="flex justify-center lg:justify-start mb-3">
+              <BrandLockup iconSize={28} logoHeight={26} />
+            </div>
             <span className="text-green-400 text-xs font-bold uppercase tracking-widest">We Are Everywhere</span>
             <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white mt-2 mb-4">
               Join the Gummi Gang 🐻
