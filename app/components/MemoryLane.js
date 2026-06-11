@@ -3,123 +3,156 @@ import Image from 'next/image';
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 
-const timeline = [
-  { year: '2006', emoji: '🐻', text: 'A tiny green gummy bear with a big voice was born on the internet.' },
-  { year: '2007', emoji: '🎵', text: 'The Gummy Bear Song went viral on YouTube — the internet was never the same.' },
-  { year: '2009', emoji: '📺', text: '100 million views. Parents worldwide had the song permanently stuck in their heads.' },
-  { year: '2012', emoji: '🌍', text: '500 million+ streams. Translated into 27 languages. A true global earworm.' },
-  { year: '2025', emoji: '🚀', text: '$GUMMI arrives on Solana. The nostalgia lives on — now on the blockchain.' },
-];
-
-const stats = [
-  { value: '1.3B+',  label: 'YouTube Views' },
-  { value: '#1',     label: 'Viral Song 2007' },
-  { value: '27',     label: 'Languages' },
-  { value: '∞',      label: 'Nostalgia' },
+const cards = [
+  {
+    year:  '2006',
+    icon:  '🎵',
+    text:  'A tiny green gummy bear with a big voice was born on the internet.',
+    bg:    'bg-white border-green-200',
+  },
+  {
+    year:  '2007',
+    icon:  '▶️',
+    text:  'The Gummy Bear Song went viral on YouTube — the world was never the same.',
+    bg:    'bg-white border-green-200',
+  },
+  {
+    year:  '2009',
+    icon:  '💚',
+    text:  '100 million views. Parents worldwide had the song stuck in their heads.',
+    bg:    'bg-white border-green-200',
+  },
+  {
+    year:  '2026',
+    icon:  '🐻',
+    text:  '$GUMMI arrives on Solana. The nostalgia lives on — now on the blockchain.',
+    bg:    'bg-green-50 border-green-400',
+    now:   true,
+  },
 ];
 
 export default function MemoryLane() {
-  const ref = useRef(null);
+  const ref   = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section id="memory" className="relative py-20 sm:py-28 bg-[#080810] overflow-hidden">
-      {/* top divider */}
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-pink-500/40 to-transparent" />
+    <section id="memory" className="relative bg-[#edf7ed] overflow-hidden">
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6" ref={ref}>
+      {/* Top green fade */}
+      <div className="absolute top-0 inset-x-0 h-16 bg-gradient-to-b from-[#080f08] to-transparent pointer-events-none z-10" />
 
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-14"
-        >
-          <span className="text-pink-400 text-xs font-bold uppercase tracking-widest">A Trip Down</span>
-          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white mt-2 mb-4">
-            Memory Lane 🍬
-          </h2>
-          <p className="text-white/55 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
-            Before there were meme coins, there was just a little green bear who wanted
-            to make the whole world smile.
-          </p>
-        </motion.div>
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 pt-20 pb-16" ref={ref}>
 
-        {/* Stats row */}
+        {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.15, duration: 0.7 }}
-          className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-16"
+          transition={{ duration: 0.7 }}
+          className="text-center mb-3"
         >
-          {stats.map((s) => (
-            <div
-              key={s.label}
-              className="bg-white/5 border border-white/10 rounded-2xl p-5 text-center hover:border-pink-500/30 transition-colors"
-            >
-              <div className="font-display text-3xl sm:text-4xl font-bold gradient-text-pink">{s.value}</div>
-              <div className="text-white/45 text-xs sm:text-sm mt-1">{s.label}</div>
-            </div>
-          ))}
+          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-[#111]">
+            A Trip Down{' '}
+            <span className="text-green-600">Memory Lane</span>
+          </h2>
+          <p className="text-[#444] text-base sm:text-lg mt-3">
+            The journey of a gummy legend. 🎵
+          </p>
         </motion.div>
 
-        {/* Timeline + mascot */}
-        <div className="flex flex-col lg:flex-row items-start gap-12">
+        {/* Timeline area — mascot left + cards right */}
+        <div className="flex items-end gap-0 mt-12">
 
-          {/* Timeline */}
-          <div className="flex-1 relative">
-            <div className="absolute left-5 top-0 bottom-0 w-px bg-gradient-to-b from-pink-500/60 via-pink-500/20 to-transparent" />
-
-            {timeline.map((item, i) => (
-              <motion.div
-                key={item.year}
-                initial={{ opacity: 0, x: -24 }}
-                animate={inView ? { opacity: 1, x: 0 } : {}}
-                transition={{ delay: 0.1 * i + 0.2, duration: 0.6 }}
-                className="relative flex gap-5 mb-8 pl-14"
-              >
-                {/* Node */}
-                <div className="absolute left-0 top-0.5 w-10 h-10 rounded-full bg-gradient-to-br from-pink-500 to-pink-700 flex items-center justify-center text-sm z-10 shadow-lg shadow-pink-500/30">
-                  {item.emoji}
-                </div>
-                <div>
-                  <div className="text-pink-400 font-bold text-sm mb-1">{item.year}</div>
-                  <div className="text-white/75 leading-relaxed text-sm sm:text-base">{item.text}</div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Singing mascot */}
+          {/* Mascot — desktop only, anchored bottom-left */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={inView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ delay: 0.35, duration: 0.8 }}
-            className="flex-1 flex justify-center"
+            initial={{ opacity: 0, x: -24 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="hidden lg:block shrink-0 self-end -mb-1 -ml-4"
+            style={{ width: 180 }}
           >
-            <motion.div
-              animate={{ rotate: [-2, 2, -2] }}
-              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-              className="relative"
-            >
-              <div className="absolute inset-0 -m-8 bg-pink-500/8 rounded-full blur-3xl" />
-              <div className="bg-white/5 border border-white/10 rounded-3xl p-5">
-                <Image
-                  src="/mascot-sing.png"
-                  alt="Gummibär singing into a microphone"
-                  width={380}
-                  height={260}
-                  className="rounded-2xl w-full max-w-xs sm:max-w-sm"
-                />
-                <p className="text-center text-white/50 text-sm mt-4 italic">
-                  "I'm a Gummy Bear… yes I'm a Gummy Bear!" 🎤
-                </p>
-              </div>
-            </motion.div>
+            <Image
+              src="/mascot-main.png"
+              alt="Gummibär"
+              width={180}
+              height={220}
+              className="w-full drop-shadow-xl"
+            />
           </motion.div>
+
+          {/* Timeline cards */}
+          <div className="flex-1 min-w-0">
+            {/* Dashed connector — desktop only */}
+            <div className="hidden lg:flex items-center gap-0 px-4 mb-2 pointer-events-none">
+              {cards.map((_, i) => (
+                <div key={i} className="flex-1 flex items-center">
+                  <div className="h-0.5 w-full border-t-2 border-dashed border-green-400/50" />
+                  {i < cards.length - 1 && (
+                    <div className="w-2.5 h-2.5 rounded-full bg-green-400 shrink-0 mx-0" />
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* Cards grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {cards.map((c, i) => (
+                <motion.div
+                  key={c.year}
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: i * 0.12, duration: 0.6 }}
+                  className={`relative rounded-2xl border-2 p-5 shadow-sm ${c.bg}`}
+                >
+                  {c.now && (
+                    <span className="absolute top-3 right-3 bg-green-500 text-white text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-wide">
+                      NOW
+                    </span>
+                  )}
+                  {/* Icon circle */}
+                  <div className={`w-10 h-10 rounded-full flex items-center justify-center text-lg mb-3 ${c.now ? 'bg-green-200' : 'bg-green-100'}`}>
+                    {c.icon}
+                  </div>
+                  <div className={`font-display font-bold text-2xl mb-2 ${c.now ? 'text-green-700' : 'text-[#111]'}`}>
+                    {c.year}
+                  </div>
+                  <p className={`text-sm leading-relaxed ${c.now ? 'text-green-900 font-semibold' : 'text-[#555]'}`}>
+                    {c.text}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Mobile mascot */}
+            <div className="flex justify-center mt-8 lg:hidden">
+              <Image
+                src="/mascot-main.png"
+                alt="Gummibär"
+                width={120}
+                height={150}
+                className="drop-shadow-lg"
+              />
+            </div>
+          </div>
         </div>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.55, duration: 0.6 }}
+          className="flex justify-center mt-10"
+        >
+          <a
+            href="#about"
+            className="inline-flex items-center gap-2 border-2 border-[#1a1a1a] text-[#1a1a1a] font-bold px-7 py-3.5 rounded-full text-sm hover:bg-[#1a1a1a] hover:text-white transition-all"
+          >
+            See the Full Story ➜
+          </a>
+        </motion.div>
       </div>
+
+      {/* Bottom green fade */}
+      <div className="absolute bottom-0 inset-x-0 h-16 bg-gradient-to-t from-[#050a05] to-transparent pointer-events-none z-10" />
     </section>
   );
 }
