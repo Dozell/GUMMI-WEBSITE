@@ -135,7 +135,7 @@ export default function MemeCreator() {
             initial={{ opacity: 0, x: -24 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ delay: 0.15, duration: 0.7 }}
-            className="w-full lg:w-80 space-y-5 shrink-0"
+            className="w-full lg:w-80 space-y-5 shrink-0 order-2 lg:order-1"
           >
 
             {/* Pick a preset mascot */}
@@ -241,7 +241,7 @@ export default function MemeCreator() {
             initial={{ opacity: 0, x: 24 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ delay: 0.25, duration: 0.7 }}
-            className="flex-1 flex flex-col items-center gap-4"
+            className="flex-1 flex flex-col items-center gap-4 order-1 lg:order-2"
           >
             <canvas
               ref={canvasRef}

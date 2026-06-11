@@ -100,7 +100,7 @@ export default function About() {
               {tokenDetails.map((d) => (
                 <div
                   key={d.label}
-                  className="bg-green-400/5 border border-green-400/15 rounded-xl p-3 hover:border-green-400/35 transition-colors"
+                  className="bg-green-400/5 border border-green-400/15 rounded-xl p-3 hover:border-green-400/40 hover:bg-green-400/8 hover:shadow-md hover:shadow-green-400/10 backdrop-blur-sm transition-all"
                 >
                   <div className="text-white/30 text-xs uppercase tracking-wider">{d.label}</div>
                   <div className="text-white font-bold text-sm mt-0.5">{d.value}</div>

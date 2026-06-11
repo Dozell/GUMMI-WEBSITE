@@ -7,26 +7,59 @@ const TICKER =
   '🐻 GUMMIBÄR IS BACK AFTER 19 YEARS!  •  🍬 100% FAN-MADE  •  ON SOLANA  •  ⚡ PURE NOSTALGIA  •  🎵 COMMUNITY DRIVEN  •  🚀 NO ROADMAP, JUST VIBES  •  ';
 
 const links = [
-  { label: 'Home',          href: '#hero' },
-  { label: 'Memory Lane',   href: '#memory' },
-  { label: 'About',         href: '#about' },
-  { label: 'Vibes',         href: '#vibes' },
-  { label: 'Meme Creator',  href: '#meme' },
-  { label: 'Community',     href: '#community' },
+  { label: 'Home',          href: '#hero',      id: 'hero' },
+  { label: 'Memory Lane',   href: '#memory',    id: 'memory' },
+  { label: 'About',         href: '#about',     id: 'about' },
+  { label: 'Vibes',         href: '#vibes',     id: 'vibes' },
+  { label: 'Meme Creator',  href: '#meme',      id: 'meme' },
+  { label: 'Community',     href: '#community', id: 'community' },
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [open,     setOpen]     = useState(false);
+  const [scrolled,       setScrolled]       = useState(false);
+  const [open,           setOpen]           = useState(false);
+  const [progress,       setProgress]       = useState(0);
+  const [activeSection,  setActiveSection]  = useState('hero');
 
   useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 60);
-    window.addEventListener('scroll', fn);
-    return () => window.removeEventListener('scroll', fn);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 60);
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(total > 0 ? (window.scrollY / total) * 100 : 0);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    const ids = links.map((l) => l.id);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveSection(entry.target.id);
+        });
+      },
+      { threshold: 0.35 }
+    );
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
   }, []);
 
   return (
     <>
+      {/* Scroll progress bar */}
+      <div
+        className="fixed top-0 left-0 h-[2px] z-[60] transition-[width] duration-100"
+        style={{
+          width: `${progress}%`,
+          background: 'linear-gradient(to right, #22c55e, #4ade80)',
+          boxShadow: '0 0 8px rgba(74,222,128,0.7)',
+        }}
+      />
+
       {/* Announcement ticker */}
       <div className="fixed top-0 inset-x-0 z-50 h-8 flex items-center overflow-hidden bg-[#0a180a] border-b border-green-500/20">
         <div className="animate-ticker flex whitespace-nowrap select-none">
@@ -42,8 +75,8 @@ export default function Navbar() {
         transition={{ delay: 0.1, duration: 0.5, ease: 'easeOut' }}
         className={`fixed top-8 inset-x-0 z-40 transition-all duration-300 ${
           scrolled
-            ? 'bg-[#0d150d]/96 backdrop-blur-md border-b border-green-500/15 py-2.5'
-            : 'py-4'
+            ? 'bg-[#0d150d]/92 backdrop-blur-xl border-b border-green-500/20 shadow-lg shadow-black/50 py-2.5'
+            : 'bg-[#0d150d]/50 backdrop-blur-md py-4'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-4">
@@ -66,9 +99,20 @@ export default function Navbar() {
               <a
                 key={l.href}
                 href={l.href}
-                className="text-white/55 hover:text-green-400 transition-colors font-semibold text-sm"
+                className={`relative transition-colors font-semibold text-sm pb-0.5 ${
+                  activeSection === l.id
+                    ? 'text-green-400'
+                    : 'text-white/55 hover:text-green-400'
+                }`}
               >
                 {l.label}
+                {activeSection === l.id && (
+                  <motion.div
+                    layoutId="nav-indicator"
+                    className="absolute -bottom-1 left-0 right-0 h-px bg-green-400 rounded-full"
+                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  />
+                )}
               </a>
             ))}
           </div>
@@ -103,7 +147,7 @@ export default function Navbar() {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.22 }}
-              className="lg:hidden overflow-hidden bg-[#111d11] border-t border-green-500/15"
+              className="lg:hidden overflow-hidden bg-[#111d11]/95 backdrop-blur-xl border-t border-green-500/15"
             >
               <div className="px-6 py-4 flex flex-col gap-1">
                 {links.map((l) => (
@@ -111,7 +155,9 @@ export default function Navbar() {
                     key={l.href}
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    className="py-3 border-b border-white/5 text-white/60 hover:text-green-400 font-semibold transition-colors"
+                    className={`py-3 border-b border-white/5 font-semibold transition-colors ${
+                      activeSection === l.id ? 'text-green-400' : 'text-white/60 hover:text-green-400'
+                    }`}
                   >
                     {l.label}
                   </a>

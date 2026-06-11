@@ -71,7 +71,7 @@ export default function Vibes() {
                 initial={{ opacity: 0, y: 24 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: i * 0.1, duration: 0.6 }}
-                className="group bg-green-400/5 border border-green-400/15 rounded-2xl p-6 hover:border-green-400/45 hover:bg-green-400/8 transition-all cursor-default"
+                className="group bg-green-400/5 border border-green-400/15 rounded-2xl p-6 hover:border-green-400/50 hover:bg-green-400/8 hover:shadow-xl hover:shadow-green-400/12 backdrop-blur-sm transition-all cursor-default"
               >
                 <div className="flex items-start justify-between mb-4">
                   <span className="font-display font-bold text-5xl leading-none text-green-400/25 group-hover:text-green-400/60 transition-colors">

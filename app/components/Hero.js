@@ -110,7 +110,7 @@ export default function Hero() {
           >
             <button
               disabled
-              className="relative flex items-center justify-center gap-2 bg-green-500 text-[#0d150d] font-extrabold px-8 py-4 rounded-full text-base opacity-55 cursor-not-allowed w-full sm:w-auto shadow-lg shadow-green-500/30"
+              className="relative flex items-center justify-center gap-2 bg-green-500 text-[#0d150d] font-extrabold px-8 py-4 rounded-full text-base cursor-not-allowed w-full sm:w-auto animate-cta-pulse"
             >
               🛒 Buy on Pump.fun
               <span className="absolute -top-2.5 -right-2.5 bg-yellow-400 text-[#0d150d] text-[9px] font-black px-2 py-0.5 rounded-full leading-none uppercase">

@@ -78,7 +78,7 @@ export default function Community() {
               transition={{ delay: i * 0.1, duration: 0.6 }}
             >
               {s.soon ? (
-                <div className={`relative bg-white/4 border border-white/10 rounded-2xl p-6 text-center transition-all ${s.border} ${s.bg} cursor-not-allowed select-none`}>
+                <div className={`relative bg-white/6 border border-white/15 rounded-2xl p-6 text-center transition-all hover:border-green-400/35 hover:bg-green-400/6 hover:shadow-lg hover:shadow-green-400/8 ${s.border} ${s.bg} cursor-not-allowed select-none`}>
                   <span className="absolute top-3 right-3 bg-yellow-400/15 text-yellow-300 text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-wide">Soon</span>
                   <div className="text-4xl mb-3">{s.icon}</div>
                   <div className="text-white font-bold text-sm">{s.name}</div>
@@ -103,18 +103,18 @@ export default function Community() {
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.45, duration: 0.6 }}
-          className="flex flex-col sm:flex-row items-center justify-between gap-6 bg-green-400/6 border border-green-400/20 rounded-3xl px-7 py-8"
+          className="flex flex-col sm:flex-row items-center justify-between gap-6 bg-green-400/8 border border-green-400/28 rounded-3xl px-7 py-8 shadow-lg shadow-green-400/5"
         >
           <div className="text-center sm:text-left">
             <h3 className="font-display text-2xl sm:text-3xl font-bold text-white mb-1">Ready to join the party?</h3>
-            <p className="text-white/45 text-sm">The sweetest community is forming. Get in before the bear starts dancing.</p>
+            <p className="text-white/60 text-sm">The sweetest community is forming. Get in before the bear starts dancing.</p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 shrink-0 w-full sm:w-auto">
             {/* ← Replace href="#" and remove `disabled` when X account is ready */}
-            <button disabled className="flex items-center justify-center gap-2 bg-white/8 border border-white/15 text-white/45 font-bold px-5 py-3 rounded-xl text-sm cursor-not-allowed w-full sm:w-auto">
+            <button disabled className="flex items-center justify-center gap-2 bg-white/10 border border-white/20 text-white/60 font-bold px-5 py-3 rounded-xl text-sm cursor-not-allowed w-full sm:w-auto">
               𝕏 Follow on X — Coming Soon
             </button>
-            <button disabled className="flex items-center justify-center gap-2 bg-sky-500/8 border border-sky-500/15 text-sky-400/45 font-bold px-5 py-3 rounded-xl text-sm cursor-not-allowed w-full sm:w-auto">
+            <button disabled className="flex items-center justify-center gap-2 bg-sky-500/10 border border-sky-500/20 text-sky-400/60 font-bold px-5 py-3 rounded-xl text-sm cursor-not-allowed w-full sm:w-auto">
               ✈️ Join Telegram — Coming Soon
             </button>
           </div>

@@ -54,7 +54,7 @@ export default function MemoryLane() {
               alt="Gummibär singing"
               width={200}
               height={200}
-              className="w-full h-auto object-contain drop-shadow-xl"
+              className="w-full h-auto object-contain drop-shadow-xl mix-blend-multiply"
             />
           </motion.div>
 
@@ -111,7 +111,7 @@ export default function MemoryLane() {
                 alt="Gummibär singing"
                 width={130}
                 height={130}
-                className="object-contain drop-shadow-lg"
+                className="object-contain drop-shadow-lg mix-blend-multiply"
               />
             </div>
           </div>
