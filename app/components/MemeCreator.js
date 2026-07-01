@@ -57,7 +57,7 @@ function drawMeme({ canvas, imageSrc, topText, bottomText, bgColor }) {
 
     // Watermark
     ctx.font         = 'bold 13px Nunito, Arial, sans-serif';
-    ctx.fillStyle    = 'rgba(255,45,120,0.75)';
+    ctx.fillStyle    = 'rgba(22,163,74,0.85)';
     ctx.textBaseline = 'bottom';
     ctx.textAlign    = 'right';
     ctx.fillText('$GUMMI', W - 10, H - 6);
@@ -107,8 +107,8 @@ export default function MemeCreator() {
   };
 
   return (
-    <section id="meme" className="relative py-20 sm:py-28 bg-[#050508] overflow-hidden">
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-pink-500/40 to-transparent" />
+    <section id="meme" className="relative py-20 sm:py-28 bg-[#0d150d] overflow-hidden">
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-green-400/25 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6" ref={sectionRef}>
 
@@ -119,7 +119,7 @@ export default function MemeCreator() {
           transition={{ duration: 0.7 }}
           className="text-center mb-12"
         >
-          <span className="text-pink-400 text-xs font-bold uppercase tracking-widest">For the culture</span>
+          <span className="text-green-400 text-xs font-bold uppercase tracking-widest">For the culture</span>
           <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white mt-2 mb-4">
             Meme Creator 🎨
           </h2>
@@ -150,7 +150,7 @@ export default function MemeCreator() {
                     onClick={() => { setSelected(m); setUploadedSrc(null); }}
                     className={`relative rounded-xl overflow-hidden border-2 transition-all focus:outline-none ${
                       !uploadedSrc && selected.src === m.src
-                        ? 'border-pink-500 ring-2 ring-pink-500/30'
+                        ? 'border-green-500 ring-2 ring-green-500/30'
                         : 'border-white/10 hover:border-white/30'
                     }`}
                   >
@@ -174,7 +174,7 @@ export default function MemeCreator() {
               <h3 className="text-white font-bold mb-3 text-sm uppercase tracking-wider">
                 2. Or Upload Your Own
               </h3>
-              <label className="flex flex-col items-center justify-center w-full h-24 border-2 border-dashed border-white/20 rounded-xl cursor-pointer hover:border-pink-400/50 hover:bg-pink-500/5 transition-all">
+              <label className="flex flex-col items-center justify-center w-full h-24 border-2 border-dashed border-white/20 rounded-xl cursor-pointer hover:border-green-400/50 hover:bg-green-400/5 transition-all">
                 <span className="text-2xl mb-1">📁</span>
                 <span className="text-white/50 text-xs text-center">
                   {uploadedSrc ? '✅ Image loaded' : 'Click to upload image'}
@@ -189,7 +189,7 @@ export default function MemeCreator() {
               {uploadedSrc && (
                 <button
                   onClick={() => setUploadedSrc(null)}
-                  className="mt-2 w-full text-xs text-white/40 hover:text-pink-400 transition-colors"
+                  className="mt-2 w-full text-xs text-white/40 hover:text-green-400 transition-colors"
                 >
                   ✕ Remove upload, use mascot
                 </button>
@@ -209,7 +209,7 @@ export default function MemeCreator() {
                   onChange={(e) => setTopText(e.target.value)}
                   maxLength={40}
                   placeholder="Top text…"
-                  className="w-full bg-white/8 border border-white/15 rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none focus:border-pink-400 transition-colors placeholder:text-white/25"
+                  className="w-full bg-white/8 border border-white/15 rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none focus:border-green-400 transition-colors placeholder:text-white/25"
                 />
               </div>
               <div>
@@ -222,7 +222,7 @@ export default function MemeCreator() {
                   onChange={(e) => setBottomText(e.target.value)}
                   maxLength={40}
                   placeholder="Bottom text…"
-                  className="w-full bg-white/8 border border-white/15 rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none focus:border-pink-400 transition-colors placeholder:text-white/25"
+                  className="w-full bg-white/8 border border-white/15 rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none focus:border-green-400 transition-colors placeholder:text-white/25"
                 />
               </div>
             </div>
@@ -230,7 +230,7 @@ export default function MemeCreator() {
             {/* Download */}
             <button
               onClick={handleDownload}
-              className="w-full bg-gradient-to-r from-pink-600 to-pink-500 hover:from-pink-500 hover:to-pink-400 text-white font-bold py-4 rounded-xl transition-all hover:scale-[1.02] active:scale-95 text-base shadow-lg shadow-pink-500/20"
+              className="w-full bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 text-[#0d150d] font-bold py-4 rounded-xl transition-all hover:scale-[1.02] active:scale-95 text-base shadow-lg shadow-green-500/20"
             >
               ⬇️ Download Meme
             </button>

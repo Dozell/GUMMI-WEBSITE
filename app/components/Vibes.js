@@ -132,7 +132,7 @@ export default function Vibes() {
             &ldquo;Oooh I&apos;m a Gummy Bear… yes I&apos;m a Gummy Bear…
             and I&apos;m apparently on the Solana blockchain now.&rdquo;
           </p>
-          <footer className="text-white/30 text-sm mt-3">— Gummibär, probably, 2026</footer>
+          <p className="text-white/30 text-sm mt-3">— Gummibär, probably, 2026</p>
         </motion.blockquote>
       </div>
     </section>
