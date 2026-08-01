@@ -2,6 +2,12 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { useInView } from 'framer-motion';
 import { motion } from 'framer-motion';
+import { HugeiconsIcon } from '@hugeicons/react';
+import {
+  PaintBrush01Icon,
+  FolderOpenIcon,
+  Download01Icon
+} from '@hugeicons/core-free-icons';
 
 const CANVAS_SIZE = 600;
 
@@ -121,7 +127,7 @@ export default function MemeCreator() {
         >
           <span className="text-green-400 text-xs font-bold uppercase tracking-widest">For the culture</span>
           <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white mt-2 mb-4">
-            Meme Creator 🎨
+            Meme Creator <HugeiconsIcon icon={PaintBrush01Icon} size={40} className="inline-block text-green-400 align-middle ml-1" />
           </h2>
           <p className="text-white/55 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
             Make your own Gummibär meme. Download it. Post it everywhere. You know what to do.
@@ -175,7 +181,9 @@ export default function MemeCreator() {
                 2. Or Upload Your Own
               </h3>
               <label className="flex flex-col items-center justify-center w-full h-24 border-2 border-dashed border-white/20 rounded-xl cursor-pointer hover:border-green-400/50 hover:bg-green-400/5 transition-all">
-                <span className="text-2xl mb-1">📁</span>
+                <span className="text-green-400 mb-1">
+                  <HugeiconsIcon icon={FolderOpenIcon} size={24} strokeWidth={2} />
+                </span>
                 <span className="text-white/50 text-xs text-center">
                   {uploadedSrc ? '✅ Image loaded' : 'Click to upload image'}
                 </span>
@@ -230,9 +238,10 @@ export default function MemeCreator() {
             {/* Download */}
             <button
               onClick={handleDownload}
-              className="w-full bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 text-[#0d150d] font-bold py-4 rounded-xl transition-all hover:scale-[1.02] active:scale-95 text-base shadow-lg shadow-green-500/20"
+              className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 text-[#0d150d] font-bold py-4 rounded-xl transition-all hover:scale-[1.02] active:scale-95 text-base shadow-lg shadow-green-500/20"
             >
-              ⬇️ Download Meme
+              <HugeiconsIcon icon={Download01Icon} size={20} strokeWidth={2.5} />
+              Download Meme
             </button>
           </motion.div>
 

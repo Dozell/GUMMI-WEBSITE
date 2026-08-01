@@ -2,6 +2,13 @@
 import Image from 'next/image';
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { HugeiconsIcon } from '@hugeicons/react';
+import {
+  NewTwitterIcon,
+  TelegramIcon,
+  RocketIcon,
+  BarChartIcon
+} from '@hugeicons/core-free-icons';
 import BrandLockup from './BrandLockup';
 
 /*
@@ -9,10 +16,10 @@ import BrandLockup from './BrandLockup';
  * The "X Coming Soon" button in the banner also has a clear comment below.
  */
 const socials = [
-  { name: 'X / Twitter', handle: '@GummiCoin',     icon: '𝕏',  desc: 'Memes, updates, and bear energy.',  border: 'hover:border-white/30',     bg: 'hover:bg-white/5',      href: '#', soon: true },
-  { name: 'Telegram',    handle: 't.me/GummiCoin',  icon: '✈️', desc: 'The main community chat.',          border: 'hover:border-sky-400/30',   bg: 'hover:bg-sky-500/5',    href: '#', soon: true },
-  { name: 'Pump.fun',    handle: 'Buy $GUMMI',       icon: '🚀', desc: 'Official launch page.',             border: 'hover:border-green-400/30', bg: 'hover:bg-green-400/5',  href: '#', soon: true },
-  { name: 'DexScreener', handle: 'Track $GUMMI',     icon: '📊', desc: 'Watch the chart go.',               border: 'hover:border-green-400/30', bg: 'hover:bg-green-400/5',  href: '#', soon: true },
+  { name: 'X / Twitter', handle: '@GummiCoin',     icon: NewTwitterIcon,  desc: 'Memes, updates, and bear energy.',  border: 'hover:border-white/30',     bg: 'hover:bg-white/5',      href: '#', soon: true },
+  { name: 'Telegram',    handle: 't.me/GummiCoin',  icon: TelegramIcon, desc: 'The main community chat.',          border: 'hover:border-sky-400/30',   bg: 'hover:bg-sky-500/5',    href: '#', soon: true },
+  { name: 'Pump.fun',    handle: 'Buy $GUMMI',       icon: RocketIcon, desc: 'Official launch page.',             border: 'hover:border-green-400/30', bg: 'hover:bg-green-400/5',  href: '#', soon: true },
+  { name: 'DexScreener', handle: 'Track $GUMMI',     icon: BarChartIcon, desc: 'Watch the chart go.',               border: 'hover:border-green-400/30', bg: 'hover:bg-green-400/5',  href: '#', soon: true },
 ];
 
 export default function Community() {
@@ -84,7 +91,9 @@ export default function Community() {
               {s.soon ? (
                 <div className={`relative bg-white/6 border border-white/15 rounded-2xl p-6 text-center transition-all hover:border-green-400/35 hover:bg-green-400/6 hover:shadow-lg hover:shadow-green-400/8 ${s.border} ${s.bg} cursor-not-allowed select-none`}>
                   <span className="absolute top-3 right-3 bg-yellow-400/15 text-yellow-300 text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-wide">Soon</span>
-                  <div className="text-4xl mb-3">{s.icon}</div>
+                  <div className="flex justify-center mb-3 text-green-400">
+                    <HugeiconsIcon icon={s.icon} size={36} strokeWidth={1.5} />
+                  </div>
                   <div className="text-white font-bold text-sm">{s.name}</div>
                   <div className="text-white/35 text-xs mt-1">{s.handle}</div>
                   <div className="text-white/25 text-xs mt-2 leading-snug">{s.desc}</div>
@@ -92,7 +101,9 @@ export default function Community() {
               ) : (
                 <a href={s.href} target="_blank" rel="noopener noreferrer"
                   className={`relative block bg-white/4 border border-white/10 rounded-2xl p-6 text-center transition-all ${s.border} ${s.bg}`}>
-                  <div className="text-4xl mb-3">{s.icon}</div>
+                  <div className="flex justify-center mb-3 text-green-400">
+                    <HugeiconsIcon icon={s.icon} size={36} strokeWidth={1.5} />
+                  </div>
                   <div className="text-white font-bold text-sm">{s.name}</div>
                   <div className="text-white/35 text-xs mt-1">{s.handle}</div>
                   <div className="text-white/25 text-xs mt-2 leading-snug">{s.desc}</div>
@@ -116,10 +127,12 @@ export default function Community() {
           <div className="flex flex-col sm:flex-row gap-3 shrink-0 w-full sm:w-auto">
             {/* ← Replace href="#" and remove `disabled` when X account is ready */}
             <button disabled className="flex items-center justify-center gap-2 bg-white/10 border border-white/20 text-white/60 font-bold px-5 py-3 rounded-xl text-sm cursor-not-allowed w-full sm:w-auto">
-              𝕏 Follow on X — Coming Soon
+              <HugeiconsIcon icon={NewTwitterIcon} size={16} strokeWidth={2} />
+              Follow on X — Coming Soon
             </button>
             <button disabled className="flex items-center justify-center gap-2 bg-sky-500/10 border border-sky-500/20 text-sky-400/60 font-bold px-5 py-3 rounded-xl text-sm cursor-not-allowed w-full sm:w-auto">
-              ✈️ Join Telegram — Coming Soon
+              <HugeiconsIcon icon={TelegramIcon} size={16} strokeWidth={2} />
+              Join Telegram — Coming Soon
             </button>
           </div>
         </motion.div>

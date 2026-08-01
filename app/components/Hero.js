@@ -1,23 +1,38 @@
 'use client';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { HugeiconsIcon } from '@hugeicons/react';
+import {
+  LollipopIcon,
+  MusicNote01Icon,
+  MusicNote02Icon,
+  FlashIcon,
+  CandyIcon,
+  StarIcon,
+  HeartIcon,
+  UserGroupIcon,
+  RocketIcon,
+  ShoppingCart01Icon,
+  TelegramIcon,
+  AlertCircleIcon
+} from '@hugeicons/core-free-icons';
 
-/* Floating emoji accents around the mascot */
+/* Floating accents around the mascot */
 const floats = [
-  { emoji: '🍬', style: { top: '4%',    right: '2%'  }, cls: 'text-3xl animate-float-rotate' },
-  { emoji: '🎵', style: { top: '16%',   right: '-4%' }, cls: 'text-2xl animate-float-y animation-delay-500' },
-  { emoji: '⚡', style: { top: '42%',   right: '-5%' }, cls: 'text-xl  animate-float-rotate animation-delay-1000' },
-  { emoji: '🎶', style: { bottom:'28%', right: '-3%' }, cls: 'text-2xl animate-float-y animation-delay-1500' },
-  { emoji: '🍭', style: { bottom:'10%', right: '6%'  }, cls: 'text-2xl animate-float-rotate animation-delay-2000' },
-  { emoji: '⭐', style: { top: '8%',    left: '4%'   }, cls: 'text-xl  animate-float-y animation-delay-2500' },
-  { emoji: '🎵', style: { bottom:'42%', left: '2%'   }, cls: 'text-lg  animate-float-rotate animation-delay-1000' },
+  { icon: LollipopIcon, size: 28, style: { top: '4%',    right: '2%'  }, cls: 'text-green-400 animate-float-rotate' },
+  { icon: MusicNote01Icon, size: 22, style: { top: '16%',   right: '-4%' }, cls: 'text-green-400/80 animate-float-y animation-delay-500' },
+  { icon: FlashIcon, size: 18, style: { top: '42%',   right: '-5%' }, cls: 'text-yellow-400 animate-float-rotate animation-delay-1000' },
+  { icon: MusicNote02Icon, size: 22, style: { bottom:'28%', right: '-3%' }, cls: 'text-green-300/90 animate-float-y animation-delay-1500' },
+  { icon: CandyIcon, size: 22, style: { bottom:'10%', right: '6%'  }, cls: 'text-green-400 animate-float-rotate animation-delay-2000' },
+  { icon: StarIcon, size: 18, style: { top: '8%',    left: '4%'   }, cls: 'text-yellow-400 animate-float-y animation-delay-2500' },
+  { icon: MusicNote01Icon, size: 16, style: { bottom:'42%', left: '2%'   }, cls: 'text-green-400/70 animate-float-rotate animation-delay-1000' },
 ];
 
 const features = [
-  { icon: '⚡', label: '100% Fan-Made',   desc: 'Made by fans, for fans. Not affiliated with the original brand.' },
-  { icon: '💚', label: 'Pure Nostalgia',  desc: 'Bringing back memories and good vibes from the golden era.' },
-  { icon: '👥', label: 'Community First', desc: 'No insiders. No dev team. Just a community of true believers.' },
-  { icon: '🚀', label: 'Built on Solana', desc: 'Lightning fast, low fees. Built for the future of meme culture.' },
+  { icon: FlashIcon, label: '100% Fan-Made',   desc: 'Made by fans, for fans. Not affiliated with the original brand.', color: 'text-yellow-400' },
+  { icon: HeartIcon, label: 'Pure Nostalgia',  desc: 'Bringing back memories and good vibes from the golden era.', color: 'text-green-400' },
+  { icon: UserGroupIcon, label: 'Community First', desc: 'No insiders. No dev team. Just a community of true believers.', color: 'text-emerald-400' },
+  { icon: RocketIcon, label: 'Built on Solana', desc: 'Lightning fast, low fees. Built for the future of meme culture.', color: 'text-sky-400' },
 ];
 
 export default function Hero() {
@@ -112,7 +127,8 @@ export default function Hero() {
               disabled
               className="relative flex items-center justify-center gap-2 bg-green-500 text-[#0d150d] font-extrabold px-8 py-4 rounded-full text-base cursor-not-allowed w-full sm:w-auto animate-cta-pulse"
             >
-              🛒 Buy on Pump.fun
+              <HugeiconsIcon icon={ShoppingCart01Icon} size={20} strokeWidth={2.5} />
+              Buy on Pump.fun
               <span className="absolute -top-2.5 -right-2.5 bg-yellow-400 text-[#0d150d] text-[9px] font-black px-2 py-0.5 rounded-full leading-none uppercase">
                 SOON
               </span>
@@ -121,7 +137,8 @@ export default function Hero() {
               href="#community"
               className="flex items-center justify-center gap-2 border border-white/20 hover:border-green-400/60 text-white/70 hover:text-green-300 font-bold px-8 py-4 rounded-full text-base transition-all hover:bg-green-400/8 w-full sm:w-auto"
             >
-              ✈️ Join the Community
+              <HugeiconsIcon icon={TelegramIcon} size={20} strokeWidth={2.5} />
+              Join the Community
             </a>
           </motion.div>
 
@@ -136,14 +153,14 @@ export default function Hero() {
               { label: 'CHAIN',  value: '◎ Solana' },
               { label: 'TICKER', value: '$GUMMI' },
               { label: 'LAUNCH', value: '2026',    green: true },
-              { label: 'VIBE',   value: '🎵 Pure Fun' },
+              { label: 'VIBE',   value: 'Pure Fun', icon: MusicNote01Icon },
             ].map((s) => (
               <div
                 key={s.label}
                 className="bg-white/5 border border-white/10 hover:border-green-400/25 rounded-xl px-4 py-2.5 text-center min-w-[82px] transition-colors"
               >
                 <div className="text-white/30 text-[9px] uppercase tracking-widest font-bold mb-0.5">{s.label}</div>
-                <div className={`font-bold text-sm ${s.green ? 'text-green-400' : 'text-white'}`}>{s.value}</div>
+                <div className={`font-bold text-sm flex items-center justify-center gap-1.5 ${s.green ? 'text-green-400' : 'text-white'}`}>{s.icon && <HugeiconsIcon icon={s.icon} size={14} strokeWidth={2.5} className="text-green-400" />}{s.value}</div>
               </div>
             ))}
           </motion.div>
@@ -155,7 +172,9 @@ export default function Hero() {
             transition={{ delay: 1.0, duration: 0.6 }}
             className="flex items-start gap-2 bg-white/4 border border-white/8 rounded-xl px-4 py-3 max-w-lg text-left"
           >
-            <span className="text-sm mt-0.5 shrink-0">⚠️</span>
+            <span className="text-yellow-500 mt-0.5 shrink-0">
+              <HugeiconsIcon icon={AlertCircleIcon} size={16} strokeWidth={2.5} />
+            </span>
             <p className="text-white/35 text-xs leading-relaxed">
               <strong className="text-white/50">Unofficial fan project.</strong> Not affiliated with, endorsed by, or connected to the original Gummibär brand, creators, or rights holders. Not financial advice.
             </p>
@@ -198,7 +217,7 @@ export default function Hero() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.6 + i * 0.1, duration: 0.4, type: 'spring' }}
               >
-                {f.emoji}
+                <HugeiconsIcon icon={f.icon} size={f.size} strokeWidth={2} />
               </motion.span>
             ))}
 
@@ -218,7 +237,9 @@ export default function Hero() {
                 transition={{ delay: 1.0 + i * 0.1, duration: 0.5 }}
                 className="flex items-start gap-3 px-6 py-5"
               >
-                <span className="text-xl shrink-0 mt-0.5">{f.icon}</span>
+                <span className={`shrink-0 mt-0.5 ${f.color}`}>
+                  <HugeiconsIcon icon={f.icon} size={20} strokeWidth={2} />
+                </span>
                 <div>
                   <div className="text-green-400 font-bold text-sm">{f.label}</div>
                   <div className="text-white/40 text-xs leading-relaxed mt-0.5">{f.desc}</div>

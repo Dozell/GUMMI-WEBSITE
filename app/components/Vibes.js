@@ -2,23 +2,32 @@
 import Image from 'next/image';
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { HugeiconsIcon } from '@hugeicons/react';
+import {
+  SmileIcon,
+  MusicNote01Icon,
+  HelpCircleIcon,
+  RocketIcon,
+  Cancel01Icon,
+  CheckmarkCircle01Icon
+} from '@hugeicons/core-free-icons';
 
 const phases = [
-  { num: '01', icon: '🕺', title: 'Launch & Dance',   desc: 'Deploy on Pump.fun. Tell the world. Dance a lot. That\'s the whole plan.' },
-  { num: '02', icon: '🎵', title: 'Make More Memes',  desc: 'Post memes. Share vibes. Maybe get on TikTok. Keep the bear dancing.' },
-  { num: '03', icon: '🐻', title: '???',              desc: 'Nobody knows. The bear is in charge. We just follow wherever it leads.' },
-  { num: '04', icon: '🚀', title: 'To The Moon',      desc: 'Standard meme coin protocol. Strap in. You know the drill.' },
+  { num: '01', icon: SmileIcon, title: 'Launch & Dance',   desc: 'Deploy on Pump.fun. Tell the world. Dance a lot. That\'s the whole plan.' },
+  { num: '02', icon: MusicNote01Icon, title: 'Make More Memes',  desc: 'Post memes. Share vibes. Maybe get on TikTok. Keep the bear dancing.' },
+  { num: '03', icon: HelpCircleIcon, title: '???',              desc: 'Nobody knows. The bear is in charge. We just follow wherever it leads.' },
+  { num: '04', icon: RocketIcon, title: 'To The Moon',      desc: 'Standard meme coin protocol. Strap in. You know the drill.' },
 ];
 
 const promises = [
-  { icon: '❌', text: 'No whitepaper'      },
-  { icon: '❌', text: 'No team allocation' },
-  { icon: '❌', text: 'No investor rounds' },
-  { icon: '❌', text: 'No utility token'   },
-  { icon: '✅', text: 'Pure vibes'         },
-  { icon: '✅', text: 'Great memes'        },
-  { icon: '✅', text: 'Nostalgic energy'   },
-  { icon: '✅', text: 'Gummibär magic'     },
+  { icon: Cancel01Icon, text: 'No whitepaper',      color: 'text-red-500' },
+  { icon: Cancel01Icon, text: 'No team allocation', color: 'text-red-500' },
+  { icon: Cancel01Icon, text: 'No investor rounds', color: 'text-red-500' },
+  { icon: Cancel01Icon, text: 'No utility token',   color: 'text-red-500' },
+  { icon: CheckmarkCircle01Icon, text: 'Pure vibes',         color: 'text-green-400' },
+  { icon: CheckmarkCircle01Icon, text: 'Great memes',        color: 'text-green-400' },
+  { icon: CheckmarkCircle01Icon, text: 'Nostalgic energy',   color: 'text-green-400' },
+  { icon: CheckmarkCircle01Icon, text: 'Gummibär magic',     color: 'text-green-400' },
 ];
 
 export default function Vibes() {
@@ -53,7 +62,7 @@ export default function Vibes() {
         >
           <span className="text-green-400 text-xs font-bold uppercase tracking-widest">Totally Serious™</span>
           <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white mt-2 mb-4">
-            No Roadmap,<br className="sm:hidden" /> Just Vibes 🎵
+            No Roadmap,<br className="sm:hidden" /> Just Vibes <HugeiconsIcon icon={MusicNote01Icon} size={40} className="inline-block text-green-400 align-middle ml-1" />
           </h2>
           <p className="text-white/50 text-base sm:text-lg max-w-xl mx-auto">
             We don&apos;t have a whitepaper. We don&apos;t have a venture round.
@@ -77,7 +86,9 @@ export default function Vibes() {
                   <span className="font-display font-bold text-5xl leading-none text-green-400/25 group-hover:text-green-400/60 transition-colors">
                     {p.num}
                   </span>
-                  <span className="text-2xl">{p.icon}</span>
+                  <span className="text-green-400 shrink-0">
+                    <HugeiconsIcon icon={p.icon} size={28} strokeWidth={2} />
+                  </span>
                 </div>
                 <h3 className="text-white font-bold text-lg mb-2">{p.title}</h3>
                 <p className="text-white/45 text-sm leading-relaxed">{p.desc}</p>
@@ -112,7 +123,9 @@ export default function Vibes() {
               <div className="grid grid-cols-2 gap-2">
                 {promises.map((p) => (
                   <div key={p.text} className="flex items-center gap-2">
-                    <span className="text-sm">{p.icon}</span>
+                    <span className={`shrink-0 ${p.color}`}>
+                      <HugeiconsIcon icon={p.icon} size={14} strokeWidth={2.5} />
+                    </span>
                     <span className="text-white/55 text-xs">{p.text}</span>
                   </div>
                 ))}

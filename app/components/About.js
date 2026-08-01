@@ -2,6 +2,13 @@
 import Image from 'next/image';
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { HugeiconsIcon } from '@hugeicons/react';
+import {
+  LollipopIcon,
+  FlashIcon,
+  MusicNote01Icon,
+  DiamondIcon
+} from '@hugeicons/core-free-icons';
 
 /* Note: gummi-mascot-standing.png was not found in the assets folder.
    Using gummi-mascot-hero.png (standing/pointing pose) as the closest match. */
@@ -16,10 +23,10 @@ const tokenDetails = [
 ];
 
 const bullets = [
-  { icon: '🍬', title: 'Pure Nostalgia',  desc: 'Born from the sweetest internet memory. Zero utility. 100% vibes.' },
-  { icon: '⚡', title: 'Built on Solana', desc: 'Lightning-fast, low fees. Your transactions go zoom zoom.' },
-  { icon: '🎵', title: 'For the Culture', desc: 'A love letter to an era when the internet was actually fun.' },
-  { icon: '💎', title: 'Community First', desc: 'No insider deals. No roadmap. Just bears having a good time.' },
+  { icon: LollipopIcon, title: 'Pure Nostalgia',  desc: 'Born from the sweetest internet memory. Zero utility. 100% vibes.', color: 'text-green-400' },
+  { icon: FlashIcon, title: 'Built on Solana', desc: 'Lightning-fast, low fees. Your transactions go zoom zoom.', color: 'text-yellow-400' },
+  { icon: MusicNote01Icon, title: 'For the Culture', desc: 'A love letter to an era when the internet was actually fun.', color: 'text-green-300' },
+  { icon: DiamondIcon, title: 'Community First', desc: 'No insider deals. No roadmap. Just bears having a good time.', color: 'text-emerald-400' },
 ];
 
 export default function About() {
@@ -117,7 +124,9 @@ export default function About() {
             >
               {bullets.map((b) => (
                 <div key={b.title} className="flex gap-3 items-start">
-                  <span className="text-xl mt-0.5 shrink-0">{b.icon}</span>
+                  <span className={`shrink-0 mt-0.5 ${b.color}`}>
+                    <HugeiconsIcon icon={b.icon} size={20} strokeWidth={2} />
+                  </span>
                   <div>
                     <div className="text-white font-bold text-sm">{b.title}</div>
                     <div className="text-white/40 text-xs leading-snug mt-0.5">{b.desc}</div>

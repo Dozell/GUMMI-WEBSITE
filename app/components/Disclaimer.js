@@ -1,6 +1,8 @@
 'use client';
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { AlertCircleIcon } from '@hugeicons/core-free-icons';
 
 const points = [
   {
@@ -46,7 +48,9 @@ export default function Disclaimer() {
         >
           {/* Title bar */}
           <div className="flex items-center gap-3 px-6 py-4 border-b border-red-500/12 bg-red-500/6">
-            <span className="text-xl">⚠️</span>
+            <span className="text-red-500">
+              <HugeiconsIcon icon={AlertCircleIcon} size={20} strokeWidth={2.5} />
+            </span>
             <h2 className="font-display text-xl sm:text-2xl font-bold text-white">
               Important Disclaimer
             </h2>

@@ -1,6 +1,8 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { ShoppingCart01Icon } from '@hugeicons/core-free-icons';
 import BrandLockup from './BrandLockup';
 
 const TICKER =
@@ -113,7 +115,8 @@ export default function Navbar() {
           {/* Buy CTA */}
           <div className="hidden lg:block shrink-0">
             <span className="relative inline-flex items-center gap-2 border border-green-400/45 text-green-300 font-bold px-5 py-2 rounded-full text-sm cursor-not-allowed select-none hover:border-green-400/70 transition-colors">
-              🛒 Buy $GUMMI
+              <HugeiconsIcon icon={ShoppingCart01Icon} size={16} strokeWidth={2} />
+              Buy $GUMMI
               <span className="absolute -top-2 -right-2 bg-yellow-400 text-[#0d150d] text-[9px] font-black px-2 py-0.5 rounded-full leading-none uppercase">
                 SOON
               </span>
@@ -155,8 +158,9 @@ export default function Navbar() {
                     {l.label}
                   </a>
                 ))}
-                <span className="mt-4 text-center border border-green-400/40 text-green-300 font-bold px-4 py-3 rounded-xl text-sm cursor-not-allowed">
-                  🛒 Buy $GUMMI — Coming Soon
+                <span className="mt-4 flex items-center justify-center gap-2 border border-green-400/40 text-green-300 font-bold px-4 py-3 rounded-xl text-sm cursor-not-allowed">
+                  <HugeiconsIcon icon={ShoppingCart01Icon} size={16} strokeWidth={2} />
+                  Buy $GUMMI — Coming Soon
                 </span>
               </div>
             </motion.div>

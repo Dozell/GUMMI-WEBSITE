@@ -2,12 +2,19 @@
 import Image from 'next/image';
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { HugeiconsIcon } from '@hugeicons/react';
+import {
+  MusicNote01Icon,
+  PlayIcon,
+  HeartIcon,
+  StarIcon
+} from '@hugeicons/core-free-icons';
 
 const cards = [
-  { year: '2006', icon: '🎵', text: 'A tiny green gummy bear with a big voice was born on the internet.', highlight: false },
-  { year: '2007', icon: '▶️', text: 'The Gummy Bear Song went viral on YouTube — the world was never the same.', highlight: false },
-  { year: '2009', icon: '💚', text: '100 million views. Parents worldwide had the song permanently stuck in their heads.', highlight: false },
-  { year: '2026', icon: '🐻', text: '$GUMMI arrives on Solana. The nostalgia lives on — now on the blockchain.', highlight: true },
+  { year: '2006', icon: MusicNote01Icon, text: 'A tiny green gummy bear with a big voice was born on the internet.', highlight: false },
+  { year: '2007', icon: PlayIcon, text: 'The Gummy Bear Song went viral on YouTube — the world was never the same.', highlight: false },
+  { year: '2009', icon: HeartIcon, text: '100 million views. Parents worldwide had the song permanently stuck in their heads.', highlight: false },
+  { year: '2026', icon: StarIcon, text: '$GUMMI arrives on Solana. The nostalgia lives on — now on the blockchain.', highlight: true },
 ];
 
 export default function MemoryLane() {
@@ -91,8 +98,8 @@ export default function MemoryLane() {
                       NOW
                     </span>
                   )}
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center text-lg mb-3 ${c.highlight ? 'bg-green-200' : 'bg-green-100'}`}>
-                    {c.icon}
+                  <div className={`w-10 h-10 rounded-full flex items-center justify-center mb-3 ${c.highlight ? 'bg-green-200 text-green-700' : 'bg-green-100 text-green-600'}`}>
+                    <HugeiconsIcon icon={c.icon} size={18} strokeWidth={2} />
                   </div>
                   <div className={`font-display font-bold text-2xl mb-2 ${c.highlight ? 'text-green-700' : 'text-[#111]'}`}>
                     {c.year}
