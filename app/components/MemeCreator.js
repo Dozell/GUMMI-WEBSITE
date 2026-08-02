@@ -32,7 +32,7 @@ function drawMeme({ canvas, imageSrc, topText, bottomText, bgColor }) {
   img.src = imageSrc;
 
   img.onload = () => {
-    // Scale image to fit, centred
+    // Scale image to fit, centered with some margin for text
     const scale = Math.min(W / img.width, (H * 0.72) / img.height);
     const iw = img.width  * scale;
     const ih = img.height * scale;
@@ -41,32 +41,47 @@ function drawMeme({ canvas, imageSrc, topText, bottomText, bgColor }) {
     ctx.drawImage(img, ix, iy, iw, ih);
 
     // Meme text style
-    const fontSize = Math.round(W / 11);
-    ctx.font         = `900 ${fontSize}px Impact, Arial Black, sans-serif`;
+    const initialFontSize = Math.round(W / 11);
+    
     ctx.textAlign    = 'center';
     ctx.strokeStyle  = '#000000';
     ctx.fillStyle    = '#ffffff';
-    ctx.lineWidth    = Math.round(fontSize / 7);
     ctx.lineJoin     = 'round';
 
     if (topText.trim()) {
+      let text = topText.toUpperCase();
+      let fontSize = initialFontSize;
+      ctx.font = `900 ${fontSize}px Impact, Arial Black, sans-serif`;
+      while (ctx.measureText(text).width > W * 0.9 && fontSize > 20) {
+        fontSize -= 2;
+        ctx.font = `900 ${fontSize}px Impact, Arial Black, sans-serif`;
+      }
+      ctx.lineWidth    = Math.round(fontSize / 6.5);
       ctx.textBaseline = 'top';
-      ctx.strokeText(topText.toUpperCase(), W / 2, 14);
-      ctx.fillText(topText.toUpperCase(),   W / 2, 14);
+      ctx.strokeText(text, W / 2, 20);
+      ctx.fillText(text,   W / 2, 20);
     }
 
     if (bottomText.trim()) {
+      let text = bottomText.toUpperCase();
+      let fontSize = initialFontSize;
+      ctx.font = `900 ${fontSize}px Impact, Arial Black, sans-serif`;
+      while (ctx.measureText(text).width > W * 0.9 && fontSize > 20) {
+        fontSize -= 2;
+        ctx.font = `900 ${fontSize}px Impact, Arial Black, sans-serif`;
+      }
+      ctx.lineWidth    = Math.round(fontSize / 6.5);
       ctx.textBaseline = 'bottom';
-      ctx.strokeText(bottomText.toUpperCase(), W / 2, H - 14);
-      ctx.fillText(bottomText.toUpperCase(),   W / 2, H - 14);
+      ctx.strokeText(text, W / 2, H - 20);
+      ctx.fillText(text,   W / 2, H - 20);
     }
 
     // Watermark
-    ctx.font         = 'bold 13px Nunito, Arial, sans-serif';
-    ctx.fillStyle    = 'rgba(22,163,74,0.85)';
+    ctx.font         = 'bold 14px Nunito, Arial, sans-serif';
+    ctx.fillStyle    = 'rgba(22,163,74,0.7)';
     ctx.textBaseline = 'bottom';
     ctx.textAlign    = 'right';
-    ctx.fillText('$GUMMI', W - 10, H - 6);
+    ctx.fillText('$GUMMI', W - 16, H - 10);
   };
 }
 
@@ -76,7 +91,7 @@ export default function MemeCreator() {
   const inView     = useInView(sectionRef, { once: true, margin: '-80px' });
 
   const [selected,   setSelected]   = useState(DEFAULT_MASCOTS[0]);
-  const [uploadedSrc,setUploadedSrc]= useState(null); // data-URL from user upload
+  const [uploadedSrc,setUploadedSrc]= useState(null);
   const [topText,    setTopText]    = useState('WHEN YOU BUY $GUMMI');
   const [bottomText, setBottomText] = useState('AND IT MOONS 🚀');
 
@@ -117,7 +132,6 @@ export default function MemeCreator() {
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-green-500/10 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6" ref={sectionRef}>
-
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 28 }}
@@ -127,88 +141,39 @@ export default function MemeCreator() {
         >
           <span className="text-green-600 text-xs font-bold uppercase tracking-widest">For the culture</span>
           <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-800 mt-2 mb-4">
-            Meme Creator <HugeiconsIcon icon={PaintBrush01Icon} size={40} className="inline-block text-green-600 align-middle ml-1" />
+            Meme Creator
           </h2>
-          <p className="text-slate-600 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
+          <p className="text-slate-655 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
             Make your own Gummibär meme. Download it. Post it everywhere. You know what to do.
           </p>
         </motion.div>
 
-        <div className="flex flex-col lg:flex-row gap-8 items-start">
-
-          {/* ── Controls ── */}
-          <motion.div
-            initial={{ opacity: 0, x: -24 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ delay: 0.15, duration: 0.7 }}
-            className="w-full lg:w-80 space-y-5 shrink-0 order-2 lg:order-1"
-          >
-
-            {/* Pick a preset mascot */}
-            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5">
-              <h3 className="text-slate-850 font-bold mb-3 text-sm uppercase tracking-wider">
-                1. Pick a Mascot
-              </h3>
-              <div className="grid grid-cols-2 gap-2">
-                {DEFAULT_MASCOTS.map((m) => (
-                  <button
-                    key={m.src}
-                    onClick={() => { setSelected(m); setUploadedSrc(null); }}
-                    className={`relative rounded-xl overflow-hidden border-2 transition-all focus:outline-none ${
-                      !uploadedSrc && selected.src === m.src
-                        ? 'border-green-600 ring-2 ring-green-600/20'
-                        : 'border-slate-200 hover:border-slate-400'
-                    }`}
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={m.src}
-                      alt={m.label}
-                      className="w-full h-20 object-contain"
-                      style={{ background: m.bg }}
-                    />
-                    <div className="absolute bottom-0 inset-x-0 bg-black/60 text-white text-xs text-center py-1">
-                      {m.label}
-                    </div>
-                  </button>
-                ))}
-              </div>
+        {/* Center column grid layout */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.15, duration: 0.8 }}
+          className="max-w-2xl mx-auto flex flex-col items-center gap-8"
+        >
+          {/* Canvas Preview Box */}
+          <div className="relative w-full max-w-[480px] bg-white border-4 border-slate-800 rounded-3xl p-3 shadow-[8px_8px_0px_0px_rgba(30,41,59,1)]">
+            <canvas
+              ref={canvasRef}
+              width={CANVAS_SIZE}
+              height={CANVAS_SIZE}
+              className="w-full h-auto aspect-square rounded-2xl border-2 border-slate-100"
+            />
+            <div className="absolute top-6 right-6 bg-slate-800 text-white text-[10px] font-black px-2 py-0.5 rounded-md uppercase tracking-wide">
+              Preview
             </div>
+          </div>
 
-            {/* Upload your own image */}
-            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5">
-              <h3 className="text-slate-800 font-bold mb-3 text-sm uppercase tracking-wider">
-                2. Or Upload Your Own
-              </h3>
-              <label className="flex flex-col items-center justify-center w-full h-24 border-2 border-dashed border-slate-200 rounded-xl cursor-pointer hover:border-green-500 hover:bg-green-500/5 transition-all">
-                <span className="text-green-600 mb-1">
-                  <HugeiconsIcon icon={FolderOpenIcon} size={24} strokeWidth={2} />
-                </span>
-                <span className="text-slate-500 text-xs text-center">
-                  {uploadedSrc ? '✅ Image loaded' : 'Click to upload image'}
-                </span>
-                <input
-                  type="file"
-                  accept="image/*"
-                  className="hidden"
-                  onChange={handleFileChange}
-                />
-              </label>
-              {uploadedSrc && (
-                <button
-                  onClick={() => setUploadedSrc(null)}
-                  className="mt-2 w-full text-xs text-slate-400 hover:text-green-600 transition-colors"
-                >
-                  ✕ Remove upload, use mascot
-                </button>
-              )}
-            </div>
-
+          {/* Controls Frame */}
+          <div className="w-full bg-slate-50 border-4 border-slate-800 rounded-3xl p-6 shadow-[8px_8px_0px_0px_rgba(30,41,59,1)] space-y-6">
             {/* Text inputs */}
-            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 space-y-4">
-              <h3 className="text-slate-800 font-bold text-sm uppercase tracking-wider">3. Add Text</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="text-slate-500 text-xs uppercase tracking-wider block mb-1">
+                <label className="text-slate-500 text-[10px] font-black uppercase tracking-wider block mb-1">
                   Top Text
                 </label>
                 <input
@@ -216,12 +181,12 @@ export default function MemeCreator() {
                   value={topText}
                   onChange={(e) => setTopText(e.target.value)}
                   maxLength={40}
-                  placeholder="Top text…"
-                  className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2.5 text-slate-850 text-sm focus:outline-none focus:border-green-600 transition-colors placeholder:text-slate-400"
+                  placeholder="TOP TEXT..."
+                  className="w-full bg-white border-2 border-slate-800 rounded-xl px-3 py-2.5 text-slate-800 text-sm font-bold uppercase focus:outline-none focus:bg-green-50/10 transition-colors"
                 />
               </div>
               <div>
-                <label className="text-slate-500 text-xs uppercase tracking-wider block mb-1">
+                <label className="text-slate-500 text-[10px] font-black uppercase tracking-wider block mb-1">
                   Bottom Text
                 </label>
                 <input
@@ -229,40 +194,79 @@ export default function MemeCreator() {
                   value={bottomText}
                   onChange={(e) => setBottomText(e.target.value)}
                   maxLength={40}
-                  placeholder="Bottom text…"
-                  className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2.5 text-slate-850 text-sm focus:outline-none focus:border-green-600 transition-colors placeholder:text-slate-400"
+                  placeholder="BOTTOM TEXT..."
+                  className="w-full bg-white border-2 border-slate-800 rounded-xl px-3 py-2.5 text-slate-800 text-sm font-bold uppercase focus:outline-none focus:bg-green-50/10 transition-colors"
                 />
               </div>
             </div>
 
-            {/* Download */}
+            {/* Mascot and custom upload grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-12 gap-4 items-stretch">
+              <div className="sm:col-span-8">
+                <label className="text-slate-500 text-[10px] font-black uppercase tracking-wider block mb-2">
+                  1. Choose Template Mascot
+                </label>
+                <div className="grid grid-cols-4 gap-2">
+                  {DEFAULT_MASCOTS.map((m) => (
+                    <button
+                      key={m.src}
+                      onClick={() => { setSelected(m); setUploadedSrc(null); }}
+                      className={`relative rounded-xl overflow-hidden border-2 transition-all focus:outline-none p-1 ${
+                        !uploadedSrc && selected.src === m.src
+                          ? 'border-green-600 bg-green-50 scale-105 shadow-sm'
+                          : 'border-slate-200 hover:border-slate-400 bg-white'
+                      }`}
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={m.src}
+                        alt={m.label}
+                        className="w-full h-10 object-contain"
+                        style={{ background: m.bg }}
+                      />
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="sm:col-span-4 flex flex-col justify-end">
+                <label className="text-slate-500 text-[10px] font-black uppercase tracking-wider block mb-2">
+                  2. Or Custom Image
+                </label>
+                <label className="flex items-center justify-center gap-2 border-2 border-dashed border-slate-400 bg-white rounded-xl px-3 py-2.5 cursor-pointer hover:border-green-500 hover:bg-green-50 transition-all text-xs font-bold text-slate-600 h-13 animate-pulse-glow">
+                  <HugeiconsIcon icon={FolderOpenIcon} size={16} strokeWidth={2.5} />
+                  {uploadedSrc ? 'Loaded' : 'Upload File'}
+                  <input
+                    type="file"
+                    accept="image/*"
+                    className="hidden"
+                    onChange={handleFileChange}
+                  />
+                </label>
+              </div>
+            </div>
+
+            {uploadedSrc && (
+              <div className="flex justify-end -mt-2">
+                <button
+                  onClick={() => setUploadedSrc(null)}
+                  className="text-xs text-slate-500 hover:text-red-500 transition-colors font-bold"
+                >
+                  ✕ Remove upload, use mascot
+                </button>
+              </div>
+            )}
+
+            {/* Action CTA */}
             <button
               onClick={handleDownload}
-              className="w-full flex items-center justify-center gap-2 bg-green-600 hover:bg-green-500 text-white font-bold py-4 rounded-xl transition-all hover:scale-[1.02] active:scale-95 text-base shadow-lg shadow-green-600/10"
+              className="w-full py-4 border-2 border-slate-800 bg-green-500 hover:bg-green-400 text-slate-900 font-display font-black rounded-2xl shadow-[4px_4px_0px_0px_rgba(30,41,59,1)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all text-base uppercase tracking-wider flex items-center justify-center gap-2"
             >
               <HugeiconsIcon icon={Download01Icon} size={20} strokeWidth={2.5} />
-              Download Meme
+              Export Meme
             </button>
-          </motion.div>
-
-          {/* ── Canvas preview ── */}
-          <motion.div
-            initial={{ opacity: 0, x: 24 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ delay: 0.25, duration: 0.7 }}
-            className="flex-1 flex flex-col items-center gap-4 order-1 lg:order-2"
-          >
-            <canvas
-              ref={canvasRef}
-              width={CANVAS_SIZE}
-              height={CANVAS_SIZE}
-              className="w-full max-w-md rounded-2xl border border-slate-200 shadow-xl shadow-slate-500/10"
-            />
-            <p className="text-slate-400 text-xs text-center">
-              Live preview — changes update instantly
-            </p>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
