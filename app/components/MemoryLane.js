@@ -25,7 +25,7 @@ export default function MemoryLane() {
     <section id="memory" className="relative bg-[#eef7ee] overflow-hidden">
 
       {/* Fade from dark top */}
-      <div className="absolute top-0 inset-x-0 h-20 bg-gradient-to-b from-[#111d11] to-transparent pointer-events-none z-10" />
+      <div className="absolute top-0 inset-x-0 h-20 bg-gradient-to-b from-[#0d150d] to-transparent pointer-events-none z-10" />
 
       <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 pt-24 pb-16" ref={ref}>
 
@@ -140,8 +140,8 @@ export default function MemoryLane() {
         </motion.div>
       </div>
 
-      {/* Fade to dark bottom */}
-      <div className="absolute bottom-0 inset-x-0 h-20 bg-gradient-to-t from-[#0d150d] to-transparent pointer-events-none z-10" />
+      {/* Fade to white bottom */}
+      <div className="absolute bottom-0 inset-x-0 h-20 bg-gradient-to-t from-white to-transparent pointer-events-none z-10" />
     </section>
   );
 }

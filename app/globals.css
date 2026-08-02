@@ -3,20 +3,20 @@
 
 /* ── Brand tokens ─────────────────────────────────────── */
 :root {
-  --green:        #4ade80;
-  --green-bright: #22c55e;
-  --green-glow:   rgba(74, 222, 128, 0.30);
-  --bg:           #0d150d;
-  --bg-alt:       #111d11;
-  --bg-card:      rgba(74, 222, 128, 0.05);
+  --green:        #22c55e;
+  --green-bright: #16a34a;
+  --green-glow:   rgba(34, 197, 94, 0.15);
+  --bg:           #ffffff;
+  --bg-alt:       #f8fafc;
+  --bg-card:      #ffffff;
   --bg-light:     #eef7ee;
 }
 
 html { scroll-behavior: smooth; }
 
 body {
-  background: #0d150d;
-  color: #ffffff;
+  background: #ffffff;
+  color: #1e293b;
   font-family: 'Nunito', sans-serif;
   overflow-x: hidden;
 }
@@ -103,5 +103,5 @@ body {
 
 /* ── Scrollbar ───────────────────────────────────────── */
 ::-webkit-scrollbar        { width: 6px; }
-::-webkit-scrollbar-track  { background: #0d150d; }
-::-webkit-scrollbar-thumb  { background: #4ade80; border-radius: 3px; }
+::-webkit-scrollbar-track  { background: #ffffff; }
+::-webkit-scrollbar-thumb  { background: #22c55e; border-radius: 3px; }

@@ -3,30 +3,14 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { HugeiconsIcon } from '@hugeicons/react';
 import {
-  LollipopIcon,
-  MusicNote01Icon,
-  MusicNote02Icon,
-  FlashIcon,
-  CandyIcon,
-  StarIcon,
-  HeartIcon,
-  UserGroupIcon,
-  RocketIcon,
   ShoppingCart01Icon,
   TelegramIcon,
-  AlertCircleIcon
+  RocketIcon,
+  FlashIcon,
+  UserGroupIcon,
+  AlertCircleIcon,
+  HeartIcon
 } from '@hugeicons/core-free-icons';
-
-/* Floating accents around the mascot */
-const floats = [
-  { icon: LollipopIcon, size: 28, style: { top: '4%',    right: '2%'  }, cls: 'text-green-400 animate-float-rotate' },
-  { icon: MusicNote01Icon, size: 22, style: { top: '16%',   right: '-4%' }, cls: 'text-green-400/80 animate-float-y animation-delay-500' },
-  { icon: FlashIcon, size: 18, style: { top: '42%',   right: '-5%' }, cls: 'text-yellow-400 animate-float-rotate animation-delay-1000' },
-  { icon: MusicNote02Icon, size: 22, style: { bottom:'28%', right: '-3%' }, cls: 'text-green-300/90 animate-float-y animation-delay-1500' },
-  { icon: CandyIcon, size: 22, style: { bottom:'10%', right: '6%'  }, cls: 'text-green-400 animate-float-rotate animation-delay-2000' },
-  { icon: StarIcon, size: 18, style: { top: '8%',    left: '4%'   }, cls: 'text-yellow-400 animate-float-y animation-delay-2500' },
-  { icon: MusicNote01Icon, size: 16, style: { bottom:'42%', left: '2%'   }, cls: 'text-green-400/70 animate-float-rotate animation-delay-1000' },
-];
 
 const features = [
   { icon: FlashIcon, label: '100% Fan-Made',   desc: 'Made by fans, for fans. Not affiliated with the original brand.', color: 'text-yellow-400' },
@@ -36,193 +20,116 @@ const features = [
 ];
 
 export default function Hero() {
+
   return (
     <section
       id="hero"
-      className="relative flex flex-col bg-[#0d150d] overflow-hidden"
-      style={{ paddingTop: '5rem' }}
+      className="relative flex flex-col min-h-screen justify-between overflow-hidden bg-[#0d150d]"
+      style={{
+        backgroundImage: "url('/banne- image.png')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        paddingTop: '6rem'
+      }}
     >
-      {/* Dot-grid texture */}
-      <div className="absolute inset-0 bg-pattern opacity-60 pointer-events-none" />
+      {/* Dark overlay to ensure text contrast */}
+      <div className="absolute inset-0 bg-[#0d150d]/55 pointer-events-none" />
+      {/* Gradient overlay for depth */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0d150d]/90 via-[#0d150d]/40 to-transparent pointer-events-none" />
 
-      {/* Ambient blobs */}
-      <div className="absolute -top-48 -left-48 w-[500px] h-[500px] bg-green-500/10 rounded-full blur-3xl animate-blob pointer-events-none" />
-      <div className="absolute top-1/2 -right-48 w-96 h-96 bg-green-400/8  rounded-full blur-3xl animate-blob animation-delay-2000 pointer-events-none" />
-      <div className="absolute -bottom-48 left-1/3  w-[500px] h-[500px] bg-green-600/6  rounded-full blur-3xl animate-blob animation-delay-4000 pointer-events-none" />
+      {/* Main content grid */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 pt-10 pb-0 flex flex-col lg:flex-row items-center justify-between gap-10 min-h-[calc(100vh-11rem)]">
+        
+        {/* LEFT Column: Copy & Actions */}
+        <div className="flex-1 flex flex-col items-center text-center lg:items-start lg:text-left pb-6 lg:pb-12 max-w-xl">
 
-      {/* ── Two-column grid ───────────────────────────── */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 pt-8 pb-0 flex flex-col lg:flex-row items-center gap-6 lg:gap-8 min-h-[calc(100vh-5rem)]">
-
-        {/* ── LEFT: copy ────────────────────────────── */}
-        <div className="flex-1 flex flex-col items-center text-center lg:items-start lg:text-left order-2 lg:order-1 pb-10 lg:pb-16">
-
-          {/* Large logo */}
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1, duration: 0.7 }}
-            className="mb-6"
-          >
-            <Image
-              src="/gummi-logo-official.png"
-              alt="Gummibär"
-              width={440}
-              height={147}
-              className="w-full max-w-[280px] sm:max-w-sm lg:max-w-[400px] h-auto object-contain drop-shadow-[0_0_30px_rgba(74,222,128,0.4)]"
-              priority
-            />
-          </motion.div>
-
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.25, duration: 0.6 }}
-            className="mb-5"
-          >
-            <span className="inline-flex items-center gap-2 border border-green-400/35 bg-green-400/8 text-green-300 text-xs font-bold px-4 py-2 rounded-full tracking-widest uppercase">
-              🐻 Fan-Made · Solana · Pump.fun
-            </span>
-          </motion.div>
-
-          {/* Headline */}
+          {/* Heading with highlighted box to match mockup */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.38, duration: 0.7 }}
-            className="font-display font-bold leading-[1.05] mb-4"
+            transition={{ delay: 0.3, duration: 0.7 }}
+            className="font-display font-black leading-[1.08] mb-6"
           >
-            <span className="block text-white   text-5xl sm:text-6xl lg:text-7xl">Gummibär</span>
-            <span className="block text-green-glow text-5xl sm:text-6xl lg:text-7xl">Is Back.</span>
+            <span className="block text-white text-5xl sm:text-6xl lg:text-7xl font-black">Bringing Nostalgia</span>
+            <span className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mt-3">
+              <span className="text-white text-5xl sm:text-6xl lg:text-7xl font-black">to</span>
+              <span className="inline-block bg-[#f97316] text-white text-4xl sm:text-5xl lg:text-6xl font-black px-6 py-2.5 rounded-2xl shadow-[0_10px_30px_rgba(249,115,22,0.45)]">
+                Meme Coins
+              </span>
+            </span>
           </motion.h1>
 
           {/* Subheadline */}
           <motion.p
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-            className="text-white/70 text-base sm:text-lg leading-relaxed mb-3 max-w-lg font-semibold"
+            transition={{ delay: 0.45, duration: 0.6 }}
+            className="text-white/80 text-base sm:text-lg leading-relaxed mb-6 max-w-lg font-semibold"
           >
-            After 19 years, the internet&apos;s favourite green bear arrives on Solana.
-          </motion.p>
-
-          {/* Supporting */}
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.6 }}
-            className="text-green-400/80 text-sm sm:text-base font-bold mb-8 tracking-wide"
-          >
-            Pure nostalgia. Pure memes. Pure vibes.
+            The internet&apos;s favourite green bear returns after 19 years to shake things up on Solana. Pure nostalgia, 100% community-driven vibes.
           </motion.p>
 
           {/* CTAs */}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 0.6 }}
-            className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto mb-8"
+            transition={{ delay: 0.6, duration: 0.6 }}
+            className="flex flex-col sm:flex-row gap-3.5 w-full sm:w-auto mb-8"
           >
             <button
               disabled
-              className="relative flex items-center justify-center gap-2 bg-green-500 text-[#0d150d] font-extrabold px-8 py-4 rounded-full text-base cursor-not-allowed w-full sm:w-auto animate-cta-pulse"
+              className="relative flex items-center justify-center gap-2 bg-white hover:bg-white/90 text-[#0d150d] font-extrabold px-8 py-4 rounded-full text-base cursor-not-allowed w-full sm:w-auto transition-all hover:scale-[1.02]"
             >
               <HugeiconsIcon icon={ShoppingCart01Icon} size={20} strokeWidth={2.5} />
-              Buy on Pump.fun
+              Buy $GUMMI
               <span className="absolute -top-2.5 -right-2.5 bg-yellow-400 text-[#0d150d] text-[9px] font-black px-2 py-0.5 rounded-full leading-none uppercase">
                 SOON
               </span>
             </button>
             <a
               href="#community"
-              className="flex items-center justify-center gap-2 border border-white/20 hover:border-green-400/60 text-white/70 hover:text-green-300 font-bold px-8 py-4 rounded-full text-base transition-all hover:bg-green-400/8 w-full sm:w-auto"
+              className="flex items-center justify-center gap-2 bg-[#c5ff55] hover:bg-[#b0f038] text-[#0d150d] font-extrabold px-8 py-4 rounded-full text-base transition-all hover:scale-[1.02] w-full sm:w-auto"
             >
               <HugeiconsIcon icon={TelegramIcon} size={20} strokeWidth={2.5} />
-              Join the Community
+              Join Community
             </a>
-          </motion.div>
-
-          {/* Stats */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.85, duration: 0.6 }}
-            className="flex flex-wrap gap-2 justify-center lg:justify-start mb-7"
-          >
-            {[
-              { label: 'CHAIN',  value: '◎ Solana' },
-              { label: 'TICKER', value: '$GUMMI' },
-              { label: 'LAUNCH', value: '2026',    green: true },
-              { label: 'VIBE',   value: 'Pure Fun', icon: MusicNote01Icon },
-            ].map((s) => (
-              <div
-                key={s.label}
-                className="bg-white/5 border border-white/10 hover:border-green-400/25 rounded-xl px-4 py-2.5 text-center min-w-[82px] transition-colors"
-              >
-                <div className="text-white/30 text-[9px] uppercase tracking-widest font-bold mb-0.5">{s.label}</div>
-                <div className={`font-bold text-sm flex items-center justify-center gap-1.5 ${s.green ? 'text-green-400' : 'text-white'}`}>{s.icon && <HugeiconsIcon icon={s.icon} size={14} strokeWidth={2.5} className="text-green-400" />}{s.value}</div>
-              </div>
-            ))}
           </motion.div>
 
           {/* Disclaimer strip */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.0, duration: 0.6 }}
-            className="flex items-start gap-2 bg-white/4 border border-white/8 rounded-xl px-4 py-3 max-w-lg text-left"
+            transition={{ delay: 0.75, duration: 0.6 }}
+            className="flex items-start gap-2 bg-black/40 border border-white/10 rounded-xl px-4 py-3 max-w-lg text-left backdrop-blur-sm"
           >
             <span className="text-yellow-500 mt-0.5 shrink-0">
               <HugeiconsIcon icon={AlertCircleIcon} size={16} strokeWidth={2.5} />
             </span>
-            <p className="text-white/35 text-xs leading-relaxed">
-              <strong className="text-white/50">Unofficial fan project.</strong> Not affiliated with, endorsed by, or connected to the original Gummibär brand, creators, or rights holders. Not financial advice.
+            <p className="text-white/40 text-xs leading-relaxed">
+              <strong className="text-white/60">Unofficial fan project.</strong> Not affiliated with, endorsed by, or connected to the original Gummibär brand, creators, or rights holders. Not financial advice.
             </p>
           </motion.div>
         </div>
 
-        {/* ── RIGHT: mascot ─────────────────────────── */}
-        <div className="flex-1 flex justify-center items-center order-1 lg:order-2 relative">
+        {/* RIGHT Column: Mascot */}
+        <div className="flex-1 flex justify-center items-center lg:items-end w-full max-w-md lg:max-w-xl">
           <motion.div
-            initial={{ opacity: 0, scale: 0.85 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.3, duration: 0.8, ease: 'easeOut' }}
-            className="relative flex items-center justify-center"
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="w-[85%] sm:w-[75%] md:w-[65%] lg:w-[95%] max-w-[420px]"
           >
-            {/* Outer diffuse glow */}
-            <div className="absolute w-80 h-80 lg:w-[520px] lg:h-[520px] bg-green-400/12 rounded-full blur-3xl animate-pulse-glow" />
-
-            {/* Neon ring */}
-            <div className="absolute w-64 h-64 sm:w-80 sm:h-80 lg:w-[440px] lg:h-[440px] rounded-full neon-ring animate-pulse-glow" />
-
-            {/* Hero mascot — PNG with alpha, no blend mode needed */}
-            <div className="animate-bear-bounce relative z-10">
-              <Image
-                src="/gummi-mascot-hero.png"
-                alt="Gummibär"
-                width={520}
-                height={780}
-                className="relative z-10 w-64 sm:w-80 lg:w-[480px] h-auto object-contain drop-shadow-2xl"
-                priority
-              />
-            </div>
-
-            {/* Floating emojis */}
-            {floats.map((f, i) => (
-              <motion.span
-                key={i}
-                className={`absolute select-none pointer-events-none z-20 ${f.cls}`}
-                style={f.style}
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.6 + i * 0.1, duration: 0.4, type: 'spring' }}
-              >
-                <HugeiconsIcon icon={f.icon} size={f.size} strokeWidth={2} />
-              </motion.span>
-            ))}
-
+            <Image
+              src="/gummi-mascot-hero.png"
+              alt="Gummibär Mascot"
+              width={420}
+              height={630}
+              className="w-full h-auto object-contain drop-shadow-[0_20px_50px_rgba(74,222,128,0.25)] animate-bear-bounce"
+              priority
+            />
           </motion.div>
         </div>
+
       </div>
 
       {/* ── Feature strip ─────────────────────────────── */}

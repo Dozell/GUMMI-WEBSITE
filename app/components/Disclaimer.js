@@ -36,22 +36,22 @@ export default function Disclaimer() {
   const inView = useInView(ref, { once: true, margin: '-60px' });
 
   return (
-    <section id="disclaimer" className="relative py-16 sm:py-20 bg-[#080f08]">
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-red-500/20 to-transparent" />
+    <section id="disclaimer" className="relative py-16 sm:py-20 bg-white">
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-red-500/10 to-transparent" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="bg-red-500/4 border border-red-500/18 rounded-2xl overflow-hidden"
+          className="bg-red-50/30 border border-red-100 rounded-2xl overflow-hidden shadow-sm"
         >
           {/* Title bar */}
-          <div className="flex items-center gap-3 px-6 py-4 border-b border-red-500/12 bg-red-500/6">
-            <span className="text-red-500">
+          <div className="flex items-center gap-3 px-6 py-4 border-b border-red-100 bg-red-50/60">
+            <span className="text-red-600">
               <HugeiconsIcon icon={AlertCircleIcon} size={20} strokeWidth={2.5} />
             </span>
-            <h2 className="font-display text-xl sm:text-2xl font-bold text-white">
+            <h2 className="font-display text-xl sm:text-2xl font-bold text-slate-800">
               Important Disclaimer
             </h2>
           </div>
@@ -64,8 +64,8 @@ export default function Disclaimer() {
                 animate={inView ? { opacity: 1, x: 0 } : {}}
                 transition={{ delay: i * 0.08, duration: 0.5 }}
               >
-                <h3 className="text-white font-bold text-sm mb-1">{p.heading}</h3>
-                <p className="text-white/45 text-sm leading-relaxed">{p.body}</p>
+                <h3 className="text-slate-800 font-bold text-sm mb-1">{p.heading}</h3>
+                <p className="text-slate-500 text-sm leading-relaxed">{p.body}</p>
               </motion.div>
             ))}
 
@@ -73,9 +73,9 @@ export default function Disclaimer() {
               initial={{ opacity: 0 }}
               animate={inView ? { opacity: 1 } : {}}
               transition={{ delay: 0.38, duration: 0.5 }}
-              className="pt-4 border-t border-red-500/12"
+              className="pt-4 border-t border-red-100"
             >
-              <p className="text-red-400/60 text-xs font-semibold uppercase tracking-wider text-center">
+              <p className="text-red-600/80 text-xs font-semibold uppercase tracking-wider text-center">
                 $GUMMI is a meme coin for entertainment purposes only.
                 It has no intrinsic value and no guarantee of any return.
               </p>

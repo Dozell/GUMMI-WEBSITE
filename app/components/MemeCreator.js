@@ -113,8 +113,8 @@ export default function MemeCreator() {
   };
 
   return (
-    <section id="meme" className="relative py-20 sm:py-28 bg-[#0d150d] overflow-hidden">
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-green-400/25 to-transparent" />
+    <section id="meme" className="relative py-20 sm:py-28 bg-white overflow-hidden">
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-green-500/10 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6" ref={sectionRef}>
 
@@ -125,11 +125,11 @@ export default function MemeCreator() {
           transition={{ duration: 0.7 }}
           className="text-center mb-12"
         >
-          <span className="text-green-400 text-xs font-bold uppercase tracking-widest">For the culture</span>
-          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white mt-2 mb-4">
-            Meme Creator <HugeiconsIcon icon={PaintBrush01Icon} size={40} className="inline-block text-green-400 align-middle ml-1" />
+          <span className="text-green-600 text-xs font-bold uppercase tracking-widest">For the culture</span>
+          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-800 mt-2 mb-4">
+            Meme Creator <HugeiconsIcon icon={PaintBrush01Icon} size={40} className="inline-block text-green-600 align-middle ml-1" />
           </h2>
-          <p className="text-white/55 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
+          <p className="text-slate-600 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
             Make your own Gummibär meme. Download it. Post it everywhere. You know what to do.
           </p>
         </motion.div>
@@ -145,8 +145,8 @@ export default function MemeCreator() {
           >
 
             {/* Pick a preset mascot */}
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-5">
-              <h3 className="text-white font-bold mb-3 text-sm uppercase tracking-wider">
+            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5">
+              <h3 className="text-slate-850 font-bold mb-3 text-sm uppercase tracking-wider">
                 1. Pick a Mascot
               </h3>
               <div className="grid grid-cols-2 gap-2">
@@ -156,8 +156,8 @@ export default function MemeCreator() {
                     onClick={() => { setSelected(m); setUploadedSrc(null); }}
                     className={`relative rounded-xl overflow-hidden border-2 transition-all focus:outline-none ${
                       !uploadedSrc && selected.src === m.src
-                        ? 'border-green-500 ring-2 ring-green-500/30'
-                        : 'border-white/10 hover:border-white/30'
+                        ? 'border-green-600 ring-2 ring-green-600/20'
+                        : 'border-slate-200 hover:border-slate-400'
                     }`}
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -176,15 +176,15 @@ export default function MemeCreator() {
             </div>
 
             {/* Upload your own image */}
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-5">
-              <h3 className="text-white font-bold mb-3 text-sm uppercase tracking-wider">
+            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5">
+              <h3 className="text-slate-800 font-bold mb-3 text-sm uppercase tracking-wider">
                 2. Or Upload Your Own
               </h3>
-              <label className="flex flex-col items-center justify-center w-full h-24 border-2 border-dashed border-white/20 rounded-xl cursor-pointer hover:border-green-400/50 hover:bg-green-400/5 transition-all">
-                <span className="text-green-400 mb-1">
+              <label className="flex flex-col items-center justify-center w-full h-24 border-2 border-dashed border-slate-200 rounded-xl cursor-pointer hover:border-green-500 hover:bg-green-500/5 transition-all">
+                <span className="text-green-600 mb-1">
                   <HugeiconsIcon icon={FolderOpenIcon} size={24} strokeWidth={2} />
                 </span>
-                <span className="text-white/50 text-xs text-center">
+                <span className="text-slate-500 text-xs text-center">
                   {uploadedSrc ? '✅ Image loaded' : 'Click to upload image'}
                 </span>
                 <input
@@ -197,7 +197,7 @@ export default function MemeCreator() {
               {uploadedSrc && (
                 <button
                   onClick={() => setUploadedSrc(null)}
-                  className="mt-2 w-full text-xs text-white/40 hover:text-green-400 transition-colors"
+                  className="mt-2 w-full text-xs text-slate-400 hover:text-green-600 transition-colors"
                 >
                   ✕ Remove upload, use mascot
                 </button>
@@ -205,10 +205,10 @@ export default function MemeCreator() {
             </div>
 
             {/* Text inputs */}
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-5 space-y-4">
-              <h3 className="text-white font-bold text-sm uppercase tracking-wider">3. Add Text</h3>
+            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 space-y-4">
+              <h3 className="text-slate-800 font-bold text-sm uppercase tracking-wider">3. Add Text</h3>
               <div>
-                <label className="text-white/40 text-xs uppercase tracking-wider block mb-1">
+                <label className="text-slate-500 text-xs uppercase tracking-wider block mb-1">
                   Top Text
                 </label>
                 <input
@@ -217,11 +217,11 @@ export default function MemeCreator() {
                   onChange={(e) => setTopText(e.target.value)}
                   maxLength={40}
                   placeholder="Top text…"
-                  className="w-full bg-white/8 border border-white/15 rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none focus:border-green-400 transition-colors placeholder:text-white/25"
+                  className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2.5 text-slate-850 text-sm focus:outline-none focus:border-green-600 transition-colors placeholder:text-slate-400"
                 />
               </div>
               <div>
-                <label className="text-white/40 text-xs uppercase tracking-wider block mb-1">
+                <label className="text-slate-500 text-xs uppercase tracking-wider block mb-1">
                   Bottom Text
                 </label>
                 <input
@@ -230,7 +230,7 @@ export default function MemeCreator() {
                   onChange={(e) => setBottomText(e.target.value)}
                   maxLength={40}
                   placeholder="Bottom text…"
-                  className="w-full bg-white/8 border border-white/15 rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none focus:border-green-400 transition-colors placeholder:text-white/25"
+                  className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2.5 text-slate-850 text-sm focus:outline-none focus:border-green-600 transition-colors placeholder:text-slate-400"
                 />
               </div>
             </div>
@@ -238,7 +238,7 @@ export default function MemeCreator() {
             {/* Download */}
             <button
               onClick={handleDownload}
-              className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 text-[#0d150d] font-bold py-4 rounded-xl transition-all hover:scale-[1.02] active:scale-95 text-base shadow-lg shadow-green-500/20"
+              className="w-full flex items-center justify-center gap-2 bg-green-600 hover:bg-green-500 text-white font-bold py-4 rounded-xl transition-all hover:scale-[1.02] active:scale-95 text-base shadow-lg shadow-green-600/10"
             >
               <HugeiconsIcon icon={Download01Icon} size={20} strokeWidth={2.5} />
               Download Meme
@@ -256,9 +256,9 @@ export default function MemeCreator() {
               ref={canvasRef}
               width={CANVAS_SIZE}
               height={CANVAS_SIZE}
-              className="w-full max-w-md rounded-2xl border border-white/10 shadow-2xl shadow-black/60"
+              className="w-full max-w-md rounded-2xl border border-slate-200 shadow-xl shadow-slate-500/10"
             />
-            <p className="text-white/30 text-xs text-center">
+            <p className="text-slate-400 text-xs text-center">
               Live preview — changes update instantly
             </p>
           </motion.div>

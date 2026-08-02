@@ -23,10 +23,10 @@ const tokenDetails = [
 ];
 
 const bullets = [
-  { icon: LollipopIcon, title: 'Pure Nostalgia',  desc: 'Born from the sweetest internet memory. Zero utility. 100% vibes.', color: 'text-green-400' },
-  { icon: FlashIcon, title: 'Built on Solana', desc: 'Lightning-fast, low fees. Your transactions go zoom zoom.', color: 'text-yellow-400' },
-  { icon: MusicNote01Icon, title: 'For the Culture', desc: 'A love letter to an era when the internet was actually fun.', color: 'text-green-300' },
-  { icon: DiamondIcon, title: 'Community First', desc: 'No insider deals. No roadmap. Just bears having a good time.', color: 'text-emerald-400' },
+  { icon: LollipopIcon, title: 'Pure Nostalgia',  desc: 'Born from the sweetest internet memory. Zero utility. 100% vibes.', color: 'text-green-600' },
+  { icon: FlashIcon, title: 'Built on Solana', desc: 'Lightning-fast, low fees. Your transactions go zoom zoom.', color: 'text-yellow-600' },
+  { icon: MusicNote01Icon, title: 'For the Culture', desc: 'A love letter to an era when the internet was actually fun.', color: 'text-green-500' },
+  { icon: DiamondIcon, title: 'Community First', desc: 'No insider deals. No roadmap. Just bears having a good time.', color: 'text-emerald-600' },
 ];
 
 export default function About() {
@@ -34,19 +34,19 @@ export default function About() {
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section id="about" className="relative py-20 sm:py-28 bg-[#0d150d] overflow-hidden">
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-green-500/30 to-transparent" />
-      <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-green-400/6 rounded-full blur-3xl pointer-events-none" />
+    <section id="about" className="relative py-20 sm:py-28 bg-white overflow-hidden">
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-green-500/10 to-transparent" />
+      <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-green-400/3 rounded-full blur-3xl pointer-events-none" />
 
-      {/* Silhouette watermark — tinted green on dark bg */}
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none overflow-hidden">
+      {/* Silhouette watermark — tinted grey on white bg */}
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 opacity-[0.015] pointer-events-none overflow-hidden">
         <Image
           src="/gummi-mascot-silhouette.jpg"
           alt=""
           width={500}
           height={500}
           className="w-80 lg:w-[400px] h-auto object-contain"
-          style={{ filter: 'invert(1) sepia(1) saturate(5) hue-rotate(80deg)' }}
+          style={{ filter: 'invert(0)' }}
         />
       </div>
 
@@ -62,7 +62,7 @@ export default function About() {
           >
             <div className="relative">
               {/* Green glow behind mascot */}
-              <div className="absolute inset-0 -m-12 bg-green-400/12 rounded-full blur-3xl animate-pulse-glow" />
+              <div className="absolute inset-0 -m-12 bg-green-400/8 rounded-full blur-3xl animate-pulse-glow" />
               <motion.div
                 animate={{ y: [0, -12, 0] }}
                 transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
@@ -85,12 +85,12 @@ export default function About() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7 }}
             >
-              <span className="text-green-400 text-xs font-bold uppercase tracking-widest">What is this thing?</span>
-              <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white mt-2 mb-5">
+              <span className="text-green-600 text-xs font-bold uppercase tracking-widest">What is this thing?</span>
+              <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-800 mt-2 mb-5">
                 About{' '}
-                <span className="text-green-glow">$GUMMI</span>
+                <span className="text-green-600">$GUMMI</span>
               </h2>
-              <p className="text-white/60 text-base sm:text-lg leading-relaxed mb-7">
+              <p className="text-slate-600 text-base sm:text-lg leading-relaxed mb-7">
                 $GUMMI is a 100% fan-made meme coin on Solana, inspired by the beloved Gummibär
                 that captured hearts worldwide on YouTube in the late 2000s. A love letter to nostalgia —
                 for everyone who still has that song stuck in their head.
@@ -107,10 +107,10 @@ export default function About() {
               {tokenDetails.map((d) => (
                 <div
                   key={d.label}
-                  className="bg-green-400/5 border border-green-400/15 rounded-xl p-3 hover:border-green-400/40 hover:bg-green-400/8 hover:shadow-md hover:shadow-green-400/10 backdrop-blur-sm transition-all"
+                  className="bg-green-50/50 border border-green-100 rounded-xl p-3 hover:border-green-300 hover:bg-green-50 hover:shadow-md hover:shadow-green-500/5 backdrop-blur-sm transition-all"
                 >
-                  <div className="text-white/30 text-xs uppercase tracking-wider">{d.label}</div>
-                  <div className="text-white font-bold text-sm mt-0.5">{d.value}</div>
+                  <div className="text-slate-400 text-xs uppercase tracking-wider">{d.label}</div>
+                  <div className="text-slate-800 font-bold text-sm mt-0.5">{d.value}</div>
                 </div>
               ))}
             </motion.div>
@@ -128,8 +128,8 @@ export default function About() {
                     <HugeiconsIcon icon={b.icon} size={20} strokeWidth={2} />
                   </span>
                   <div>
-                    <div className="text-white font-bold text-sm">{b.title}</div>
-                    <div className="text-white/40 text-xs leading-snug mt-0.5">{b.desc}</div>
+                    <div className="text-slate-800 font-bold text-sm">{b.title}</div>
+                    <div className="text-slate-500 text-xs leading-snug mt-0.5">{b.desc}</div>
                   </div>
                 </div>
               ))}
