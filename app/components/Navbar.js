@@ -68,14 +68,13 @@ export default function Navbar() {
         }}
       />
 
-      {/* Main nav */}
       <motion.nav
         initial={{ y: -80 }}
         animate={{ y: 0 }}
         transition={{ delay: 0.1, duration: 0.5, ease: 'easeOut' }}
         className={`fixed top-0 inset-x-0 z-40 transition-all duration-300 ${
           scrolled
-            ? 'bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm py-2.5'
+            ? 'bg-white/30 backdrop-blur-lg border-b border-white/20 shadow-[0_4px_30px_rgba(0,0,0,0.03)] py-2.5'
             : 'bg-transparent py-4'
         }`}
       >
@@ -89,7 +88,7 @@ export default function Navbar() {
           {/* Desktop links */}
           <div className={`hidden lg:flex items-center gap-1 rounded-full p-1 backdrop-blur-md transition-colors duration-300 ${
             scrolled
-              ? 'bg-slate-100 border border-slate-200'
+              ? 'bg-white/40 border border-white/50 shadow-sm'
               : 'bg-white/5 border border-white/10'
           }`}>
             {links.map((l) => {
@@ -131,7 +130,7 @@ export default function Navbar() {
               href="#community"
               className={`w-10 h-10 rounded-full flex items-center justify-center transition-all shadow-sm ${
                 scrolled
-                  ? 'bg-slate-100 border border-slate-200 text-slate-600 hover:bg-slate-200 hover:text-slate-900'
+                  ? 'bg-white/40 border border-white/50 text-slate-600 hover:bg-white/60 hover:text-slate-900'
                   : 'bg-white/5 border border-white/10 text-white hover:bg-white/15 hover:border-white/20'
               }`}
               title="Join the Community"
@@ -173,7 +172,7 @@ export default function Navbar() {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.22 }}
-              className="lg:hidden overflow-hidden bg-white/95 backdrop-blur-xl border-t border-slate-100"
+              className="lg:hidden overflow-hidden bg-white/45 backdrop-blur-xl border-t border-white/20 shadow-md"
             >
               <div className="px-6 py-4 flex flex-col gap-1">
                 {links.map((l) => (
@@ -181,7 +180,7 @@ export default function Navbar() {
                     key={l.href}
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    className={`py-3 border-b border-slate-100 font-semibold transition-colors ${
+                    className={`py-3 border-b border-white/25 font-semibold transition-colors ${
                       activeSection === l.id ? 'text-green-600 font-bold' : 'text-slate-600 hover:text-slate-900'
                     }`}
                   >

@@ -87,7 +87,7 @@ export default function MemoryLane() {
   return (
     <section id="memory" className="relative bg-[#eef7ee] overflow-hidden">
       {/* Fade from dark top */}
-      <div className="absolute top-0 inset-x-0 h-20 bg-gradient-to-b from-[#0d150d] to-transparent pointer-events-none z-10" />
+      <div className="absolute top-0 inset-x-0 h-4 bg-gradient-to-b from-[#0d150d]/35 to-transparent pointer-events-none z-10" />
 
       <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 pt-24 pb-16" ref={ref}>
         {/* Header */}
@@ -264,6 +264,27 @@ export default function MemoryLane() {
             </div>
           </motion.div>
         </div>
+
+        {/* YouTube Video Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30, scale: 0.98 }}
+          animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+          transition={{ type: 'spring', stiffness: 85, damping: 15, delay: 0.35 }}
+          className="flex flex-col items-center mt-16 max-w-3xl mx-auto w-full"
+        >
+          <h3 className="font-display font-black text-xl text-slate-800 mb-5 text-center flex items-center gap-2">
+            Watch the Original Legend
+          </h3>
+          <div className="w-full aspect-video rounded-3xl overflow-hidden border-4 border-slate-800 shadow-[8px_8px_0px_0px_rgba(30,41,59,1)]">
+            <iframe
+              src="https://www.youtube.com/embed/astISOttCQ0"
+              title="Gummy Bear Song Original Video"
+              className="w-full h-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        </motion.div>
       </div>
 
       {/* Fade to white bottom */}
