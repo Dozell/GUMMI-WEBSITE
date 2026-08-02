@@ -72,14 +72,38 @@ export default function Vibes() {
         <div className="flex flex-col lg:flex-row gap-10 items-start">
 
           {/* Phase cards */}
-          <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {phases.map((p, i) => (
+          {/* Phase cards */}
+          <motion.div
+            initial="hidden"
+            animate={inView ? "show" : "hidden"}
+            variants={{
+              hidden: { opacity: 0 },
+              show: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.1
+                }
+              }
+            }}
+            className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4"
+          >
+            {phases.map((p) => (
               <motion.div
                 key={p.num}
-                initial={{ opacity: 0, y: 24 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: i * 0.1, duration: 0.6 }}
-                className="group bg-white border border-green-100 rounded-2xl p-6 hover:border-green-300 hover:bg-green-50 hover:shadow-xl hover:shadow-green-500/5 backdrop-blur-sm transition-all cursor-default"
+                variants={{
+                  hidden: { opacity: 0, y: 24, scale: 0.95 },
+                  show: {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    transition: {
+                      type: 'spring',
+                      stiffness: 100,
+                      damping: 15
+                    }
+                  }
+                }}
+                className="group bg-white border border-green-100 rounded-2xl p-6 hover:border-green-300 hover:bg-green-50 hover:shadow-xl hover:shadow-green-500/5 backdrop-blur-sm transition-all cursor-default hover:scale-[1.02] duration-300"
               >
                 <div className="flex items-start justify-between mb-4">
                   <span className="font-display font-bold text-5xl leading-none text-green-600/15 group-hover:text-green-600/35 transition-colors">
@@ -93,13 +117,13 @@ export default function Vibes() {
                 <p className="text-slate-500 text-sm leading-relaxed">{p.desc}</p>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           {/* Right: skateboard mascot + promises */}
           <motion.div
-            initial={{ opacity: 0, x: 24 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.3, duration: 0.7 }}
+            initial={{ opacity: 0, scale: 0.95, y: 30 }}
+            animate={inView ? { opacity: 1, scale: 1, y: 0 } : {}}
+            transition={{ type: 'spring', stiffness: 90, damping: 15, delay: 0.25 }}
             className="flex-1 flex flex-col gap-5 items-center"
           >
             {/* Skateboard PNG — has built-in green glow, works on dark bg */}

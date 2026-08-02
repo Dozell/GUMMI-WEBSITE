@@ -41,9 +41,9 @@ export default function Disclaimer() {
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6" ref={ref}>
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 20, rotateX: 6, scale: 0.98 }}
+          animate={inView ? { opacity: 1, y: 0, rotateX: 0, scale: 1 } : {}}
+          transition={{ type: 'spring', stiffness: 80, damping: 15 }}
           className="bg-red-50/30 border border-red-100 rounded-2xl overflow-hidden shadow-sm"
         >
           {/* Title bar */}

@@ -55,9 +55,9 @@ export default function About() {
 
           {/* Mascot — PNG with alpha, no white box */}
           <motion.div
-            initial={{ opacity: 0, x: -28 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
+            animate={inView ? { opacity: 1, scale: 1, rotate: 0 } : {}}
+            transition={{ type: 'spring', stiffness: 90, damping: 15 }}
             className="flex-1 flex justify-center order-1"
           >
             <div className="relative">
@@ -78,12 +78,25 @@ export default function About() {
             </div>
           </motion.div>
 
-          {/* Copy */}
-          <div className="flex-1 order-2">
+          {/* Copy Container */}
+          <motion.div
+            initial="hidden"
+            animate={inView ? "show" : "hidden"}
+            variants={{
+              hidden: {},
+              show: {
+                transition: {
+                  staggerChildren: 0.12
+                }
+              }
+            }}
+            className="flex-1 order-2"
+          >
             <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7 }}
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100, damping: 15 } }
+              }}
             >
               <span className="text-green-600 text-xs font-bold uppercase tracking-widest">What is this thing?</span>
               <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-800 mt-2 mb-5">
@@ -99,9 +112,10 @@ export default function About() {
 
             {/* Token info */}
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.15, duration: 0.6 }}
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100, damping: 15 } }
+              }}
               className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 mb-7"
             >
               {tokenDetails.map((d) => (
@@ -117,13 +131,14 @@ export default function About() {
 
             {/* Bullets */}
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.25, duration: 0.6 }}
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100, damping: 15 } }
+              }}
               className="grid grid-cols-1 sm:grid-cols-2 gap-4"
             >
               {bullets.map((b) => (
-                <div key={b.title} className="flex gap-3 items-start">
+                <div key={b.title} className="flex gap-3 items-start hover:translate-x-1 transition-transform duration-300">
                   <span className={`shrink-0 mt-0.5 ${b.color}`}>
                     <HugeiconsIcon icon={b.icon} size={20} strokeWidth={2} />
                   </span>
@@ -134,7 +149,7 @@ export default function About() {
                 </div>
               ))}
             </motion.div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

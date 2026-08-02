@@ -105,3 +105,24 @@ body {
 ::-webkit-scrollbar        { width: 6px; }
 ::-webkit-scrollbar-track  { background: #ffffff; }
 ::-webkit-scrollbar-thumb  { background: #22c55e; border-radius: 3px; }
+
+/* ── Lenis Smooth Scroll ─────────────────────────────── */
+html.lenis, html.lenis-under-parent {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}

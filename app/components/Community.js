@@ -80,16 +80,40 @@ export default function Community() {
         </div>
 
         {/* Social cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-          {socials.map((s, i) => (
+        <motion.div
+          initial="hidden"
+          animate={inView ? "show" : "hidden"}
+          variants={{
+            hidden: { opacity: 0 },
+            show: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.1
+              }
+            }
+          }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12"
+        >
+          {socials.map((s) => (
             <motion.div
               key={s.name}
-              initial={{ opacity: 0, y: 22 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: i * 0.1, duration: 0.6 }}
+              variants={{
+                hidden: { opacity: 0, y: 22, scale: 0.95 },
+                show: {
+                  opacity: 1,
+                  y: 0,
+                  scale: 1,
+                  transition: {
+                    type: 'spring',
+                    stiffness: 100,
+                    damping: 15
+                  }
+                }
+              }}
+              className="w-full"
             >
               {s.soon ? (
-                <div className="relative bg-white border border-slate-200 rounded-2xl p-6 text-center transition-all hover:border-green-300 hover:bg-green-50 hover:shadow-lg hover:shadow-green-500/5 cursor-not-allowed select-none">
+                <div className="relative bg-white border border-slate-200 rounded-2xl p-6 text-center transition-all hover:border-green-300 hover:bg-green-50 hover:shadow-lg hover:shadow-green-500/5 cursor-not-allowed select-none hover:scale-[1.02] duration-300">
                   <span className="absolute top-3 right-3 bg-yellow-450/15 text-yellow-600 text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-wide">Soon</span>
                   <div className="flex justify-center mb-3 text-green-600">
                     <HugeiconsIcon icon={s.icon} size={36} strokeWidth={1.5} />
@@ -100,7 +124,7 @@ export default function Community() {
                 </div>
               ) : (
                 <a href={s.href} target="_blank" rel="noopener noreferrer"
-                  className="relative block bg-white border border-slate-200 rounded-2xl p-6 text-center transition-all hover:border-green-300 hover:bg-green-50">
+                  className="relative block bg-white border border-slate-200 rounded-2xl p-6 text-center transition-all hover:border-green-300 hover:bg-green-50 hover:scale-[1.02] duration-300">
                   <div className="flex justify-center mb-3 text-green-600">
                     <HugeiconsIcon icon={s.icon} size={36} strokeWidth={1.5} />
                   </div>
@@ -111,13 +135,13 @@ export default function Community() {
               )}
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Banner */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.45, duration: 0.6 }}
+          initial={{ opacity: 0, scale: 0.96, y: 20 }}
+          animate={inView ? { opacity: 1, scale: 1, y: 0 } : {}}
+          transition={{ type: 'spring', stiffness: 90, damping: 15, delay: 0.3 }}
           className="flex flex-col sm:flex-row items-center justify-between gap-6 bg-green-500/10 border border-green-200 rounded-3xl px-7 py-8 shadow-lg shadow-green-500/5"
         >
           <div className="text-center sm:text-left">

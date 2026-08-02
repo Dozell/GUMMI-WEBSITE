@@ -5,19 +5,8 @@ import { HugeiconsIcon } from '@hugeicons/react';
 import {
   ShoppingCart01Icon,
   TelegramIcon,
-  RocketIcon,
-  FlashIcon,
-  UserGroupIcon,
-  AlertCircleIcon,
-  HeartIcon
+  AlertCircleIcon
 } from '@hugeicons/core-free-icons';
-
-const features = [
-  { icon: FlashIcon, label: '100% Fan-Made',   desc: 'Made by fans, for fans. Not affiliated with the original brand.', color: 'text-yellow-400' },
-  { icon: HeartIcon, label: 'Pure Nostalgia',  desc: 'Bringing back memories and good vibes from the golden era.', color: 'text-green-400' },
-  { icon: UserGroupIcon, label: 'Community First', desc: 'No insiders. No dev team. Just a community of true believers.', color: 'text-emerald-400' },
-  { icon: RocketIcon, label: 'Built on Solana', desc: 'Lightning fast, low fees. Built for the future of meme culture.', color: 'text-sky-400' },
-];
 
 export default function Hero() {
 
@@ -130,31 +119,6 @@ export default function Hero() {
           </motion.div>
         </div>
 
-      </div>
-
-      {/* ── Feature strip ─────────────────────────────── */}
-      <div className="relative z-10 w-full border-t border-green-500/15 bg-[#111d11]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 lg:divide-x divide-white/6">
-            {features.map((f, i) => (
-              <motion.div
-                key={f.label}
-                initial={{ opacity: 0, y: 14 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.0 + i * 0.1, duration: 0.5 }}
-                className="flex items-start gap-3 px-6 py-5"
-              >
-                <span className={`shrink-0 mt-0.5 ${f.color}`}>
-                  <HugeiconsIcon icon={f.icon} size={20} strokeWidth={2} />
-                </span>
-                <div>
-                  <div className="text-green-400 font-bold text-sm">{f.label}</div>
-                  <div className="text-white/40 text-xs leading-relaxed mt-0.5">{f.desc}</div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );

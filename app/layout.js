@@ -1,6 +1,7 @@
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import SmoothScroll from "./components/SmoothScroll";
 
 export const metadata = {
   title: "Gummibär ($GUMMI) — The Sweetest Meme Coin on Solana",
@@ -13,7 +14,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="min-h-screen bg-[#0d150d] text-white overflow-x-hidden">
-        {children}
+        <SmoothScroll>
+          {children}
+        </SmoothScroll>
         <Analytics />
         <SpeedInsights />
       </body>

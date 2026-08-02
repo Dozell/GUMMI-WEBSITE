@@ -14,9 +14,6 @@ import {
 } from '@hugeicons/core-free-icons';
 import BrandLockup from './BrandLockup';
 
-const TICKER =
-  '🐻 GUMMIBÄR IS BACK AFTER 19 YEARS!  •  🍬 100% FAN-MADE  •  ON SOLANA  •  ⚡ PURE NOSTALGIA  •  🎵 COMMUNITY DRIVEN  •  🚀 NO ROADMAP, JUST VIBES  •  ';
-
 const links = [
   { label: 'Home',          href: '#hero',      id: 'hero',       icon: Home01Icon },
   { label: 'Memory Lane',   href: '#memory',    id: 'memory',     icon: HistoryIcon },
@@ -71,20 +68,12 @@ export default function Navbar() {
         }}
       />
 
-      {/* Announcement ticker */}
-      <div className="fixed top-0 inset-x-0 z-50 h-8 flex items-center overflow-hidden bg-[#0a180a] border-b border-green-500/20">
-        <div className="animate-ticker flex whitespace-nowrap select-none">
-          <span className="text-green-300 text-xs font-bold tracking-wide px-6">{TICKER.repeat(3)}</span>
-          <span className="text-green-300 text-xs font-bold tracking-wide px-6">{TICKER.repeat(3)}</span>
-        </div>
-      </div>
-
       {/* Main nav */}
       <motion.nav
         initial={{ y: -80 }}
         animate={{ y: 0 }}
         transition={{ delay: 0.1, duration: 0.5, ease: 'easeOut' }}
-        className={`fixed top-8 inset-x-0 z-40 transition-all duration-300 ${
+        className={`fixed top-0 inset-x-0 z-40 transition-all duration-300 ${
           scrolled
             ? 'bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm py-2.5'
             : 'bg-transparent py-4'
