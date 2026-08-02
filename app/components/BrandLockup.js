@@ -22,13 +22,17 @@ export default function BrandLockup({
       {/* Round mascot icon */}
       <div
         className="rounded-full overflow-hidden border border-green-400/40 shrink-0 shadow-[0_0_8px_rgba(74,222,128,0.25)]"
-        style={{ width: iconSize, height: iconSize, minWidth: iconSize }}
+        style={{
+          width: `var(--icon-size, ${iconSize}px)`,
+          height: `var(--icon-size, ${iconSize}px)`,
+          minWidth: `var(--icon-size, ${iconSize}px)`
+        }}
       >
         <Image
           src="/gummi-mascot-head.jpg"
           alt=""
-          width={iconSize}
-          height={iconSize}
+          width={48}
+          height={48}
           className="w-full h-full object-cover"
           priority={priority}
         />
@@ -41,7 +45,7 @@ export default function BrandLockup({
         width={130}
         height={44}
         className="w-auto object-contain"
-        style={{ height: logoHeight }}
+        style={{ height: `var(--logo-height, ${logoHeight}px)` }}
         priority={priority}
       />
     </div>

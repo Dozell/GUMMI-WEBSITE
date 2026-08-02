@@ -81,8 +81,8 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-4">
 
           {/* Brand lockup */}
-          <a href="#hero" className="shrink-0">
-            <BrandLockup iconSize={32} logoHeight={36} priority />
+          <a href="#hero" className="shrink-0 [--icon-size:44px] [--logo-height:50px] lg:[--icon-size:32px] lg:[--logo-height:36px]">
+            <BrandLockup priority />
           </a>
 
           {/* Desktop links */}
@@ -155,12 +155,12 @@ export default function Navbar() {
           {/* Hamburger */}
           <button
             aria-label="Toggle menu"
-            className="lg:hidden flex flex-col gap-1.5 p-2"
+            className="lg:hidden flex flex-col gap-2 p-2"
             onClick={() => setOpen(!open)}
           >
-            <span className={`block w-6 h-0.5 transition-all duration-300 origin-center ${scrolled ? 'bg-slate-800' : 'bg-white'} ${open ? 'rotate-45 translate-y-2' : ''}`} />
-            <span className={`block w-6 h-0.5 transition-all duration-300 ${scrolled ? 'bg-slate-800' : 'bg-white'} ${open ? 'opacity-0 scale-x-0' : ''}`} />
-            <span className={`block w-6 h-0.5 transition-all duration-300 origin-center ${scrolled ? 'bg-slate-800' : 'bg-white'} ${open ? '-rotate-45 -translate-y-2' : ''}`} />
+            <span className={`block w-8 h-[3px] rounded-full transition-all duration-300 origin-center ${scrolled ? 'bg-slate-800' : 'bg-white'} ${open ? 'rotate-45 translate-y-[11px]' : ''}`} />
+            <span className={`block w-8 h-[3px] rounded-full transition-all duration-300 ${scrolled ? 'bg-slate-800' : 'bg-white'} ${open ? 'opacity-0 scale-x-0' : ''}`} />
+            <span className={`block w-8 h-[3px] rounded-full transition-all duration-300 origin-center ${scrolled ? 'bg-slate-800' : 'bg-white'} ${open ? '-rotate-45 -translate-y-[11px]' : ''}`} />
           </button>
         </div>
 
