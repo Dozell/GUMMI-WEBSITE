@@ -5,21 +5,15 @@ import { motion, useInView } from 'framer-motion';
 import { HugeiconsIcon } from '@hugeicons/react';
 import {
   NewTwitterIcon,
-  TelegramIcon,
-  RocketIcon,
-  BarChartIcon
+  TelegramIcon
 } from '@hugeicons/core-free-icons';
 import BrandLockup from './BrandLockup';
 
-/*
- * TO GO LIVE: Remove `soon: true` from a card and set its href to the real URL.
- * The "X Coming Soon" button in the banner also has a clear comment below.
- */
 const socials = [
-  { name: 'X / Twitter', handle: '@GummiCoin',     icon: NewTwitterIcon,  desc: 'Memes, updates, and bear energy.',  border: 'hover:border-white/30',     bg: 'hover:bg-white/5',      href: '#', soon: true },
-  { name: 'Telegram',    handle: 't.me/GummiCoin',  icon: TelegramIcon, desc: 'The main community chat.',          border: 'hover:border-sky-400/30',   bg: 'hover:bg-sky-500/5',    href: '#', soon: true },
-  { name: 'Pump.fun',    handle: 'Buy $GUMMI',       icon: RocketIcon, desc: 'Official launch page.',             border: 'hover:border-green-400/30', bg: 'hover:bg-green-400/5',  href: '#', soon: true },
-  { name: 'DexScreener', handle: 'Track $GUMMI',     icon: BarChartIcon, desc: 'Watch the chart go.',               border: 'hover:border-green-400/30', bg: 'hover:bg-green-400/5',  href: '#', soon: true },
+  { name: 'X / Twitter', handle: '@gummimeme',     icon: NewTwitterIcon,  desc: 'Memes, updates, and bear energy.',  border: 'border-slate-800', bg: 'bg-white', href: 'https://x.com/gummimeme', soon: false },
+  { name: 'Telegram',    handle: 't.me/GummiCoin',  icon: TelegramIcon, desc: 'The main community chat.',          border: 'border-slate-800', bg: 'bg-white', href: '#', soon: false },
+  { name: 'Pump.fun',    handle: 'Buy $GUMMI',       icon: null,           desc: 'Official launch page.',             border: 'border-slate-800', bg: 'bg-white', href: '#', soon: false },
+  { name: 'DexScreener', handle: 'Track $GUMMI',     icon: null,           desc: 'Watch the chart go.',               border: 'border-slate-800', bg: 'bg-white', href: '#', soon: false },
 ];
 
 export default function Community() {
@@ -27,59 +21,41 @@ export default function Community() {
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section id="community" className="relative py-20 sm:py-28 bg-slate-50 overflow-hidden">
+    <section 
+      id="community" 
+      className="relative py-20 sm:py-28 bg-slate-50 overflow-hidden"
+      style={{
+        backgroundImage: 'linear-gradient(to right, rgba(148, 163, 184, 0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(148, 163, 184, 0.07) 1px, transparent 1px)',
+        backgroundSize: '24px 24px'
+      }}
+    >
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-green-500/10 to-transparent" />
       <div className="absolute top-1/3  left-1/4  w-64 h-64 bg-green-500/1 rounded-full blur-3xl animate-blob pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-green-450/1 rounded-full blur-3xl animate-blob animation-delay-2000 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6" ref={ref}>
 
-        {/* Header + mascot side by side */}
-        <div className="flex flex-col lg:flex-row items-center gap-10 mb-14">
-
-          {/* Thumbsup mascot — JPEG white bg in a styled card */}
-          <motion.div
-            initial={{ opacity: 0, x: -24 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="shrink-0"
-          >
-            <div className="relative">
-              <div className="absolute inset-0 -m-8 bg-green-500/5 rounded-full blur-3xl animate-pulse-glow" />
-              {/* White card intentional — thumbsup JPEG has white bg */}
-              <div className="relative z-10 bg-white rounded-3xl p-3 shadow-2xl shadow-green-500/5 border-4 border-green-500/10">
-                <Image
-                  src="/gummi-mascot-thumbsup.jpg"
-                  alt="Gummibär thumbs up"
-                  width={220}
-                  height={260}
-                  className="w-40 sm:w-52 h-auto object-contain"
-                />
-              </div>
-            </div>
-          </motion.div>
-
+        {/* Header */}
+        <div className="text-center mb-14">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7 }}
-            className="text-center lg:text-left"
           >
-            <div className="flex justify-center lg:justify-start mb-3">
+            <div className="flex justify-center mb-3 select-none">
               <BrandLockup iconSize={28} logoHeight={26} />
             </div>
-            <span className="text-green-600 text-xs font-bold uppercase tracking-widest">We Are Everywhere</span>
+            <span className="text-green-600 text-xs font-bold uppercase tracking-widest select-none">We Are Everywhere</span>
             <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-800 mt-2 mb-4">
-              Join the Gummi Gang 🐻
+              Join the Gummi Gang
             </h2>
-            <p className="text-slate-600 text-base sm:text-lg max-w-xl leading-relaxed">
-              Be part of the sweetest community in crypto.
-              Links are coming soon — the bears are still setting things up. 🍬
+            <p className="text-slate-655 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
+              Be part of the sweetest community in crypto. Links are coming soon. The bears are still setting things up.
             </p>
           </motion.div>
         </div>
 
-        {/* Social cards */}
+        {/* Social Lobby Cards Grid */}
         <motion.div
           initial="hidden"
           animate={inView ? "show" : "hidden"}
@@ -92,7 +68,7 @@ export default function Community() {
               }
             }
           }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
         >
           {socials.map((s) => (
             <motion.div
@@ -113,51 +89,109 @@ export default function Community() {
               className="w-full"
             >
               {s.soon ? (
-                <div className="relative bg-white border border-slate-200 rounded-2xl p-6 text-center transition-all hover:border-green-300 hover:bg-green-50 hover:shadow-lg hover:shadow-green-500/5 cursor-not-allowed select-none hover:scale-[1.02] duration-300">
-                  <span className="absolute top-3 right-3 bg-yellow-450/15 text-yellow-600 text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-wide">Soon</span>
-                  <div className="flex justify-center mb-3 text-green-600">
-                    <HugeiconsIcon icon={s.icon} size={36} strokeWidth={1.5} />
+                <div className="relative bg-white border-4 border-slate-800 rounded-3xl p-6 text-center select-none cursor-not-allowed shadow-[4px_4px_0px_0px_rgba(30,41,59,1)]">
+                  <div className="flex justify-center mb-4">
+                    {s.name === 'Pump.fun' ? (
+                      <div className="w-10 h-10">
+                        <svg viewBox="0 0 100 100" className="w-full h-full opacity-60">
+                          <rect x="25" y="15" width="50" height="70" rx="25" fill="#22c55e" stroke="#1e293b" strokeWidth="5.5" transform="rotate(-30 50 50)" />
+                          <circle cx="43" cy="45" r="5.5" fill="#1e293b" />
+                          <circle cx="57" cy="45" r="5.5" fill="#1e293b" />
+                          <path d="M 42 56 Q 50 64 58 56" fill="none" stroke="#1e293b" strokeWidth="6" strokeLinecap="round" />
+                        </svg>
+                      </div>
+                    ) : s.name === 'DexScreener' ? (
+                      <div className="w-10 h-10">
+                        <svg viewBox="0 0 100 100" className="w-full h-full opacity-60">
+                          <circle cx="50" cy="50" r="44" fill="#0d150d" stroke="#1E293B" strokeWidth="5.5" />
+                          <line x1="25" y1="50" x2="75" y2="50" stroke="#1b2e1b" strokeWidth="2.5" strokeDasharray="2 2" />
+                          <line x1="50" y1="25" x2="50" y2="75" stroke="#1b2e1b" strokeWidth="2.5" strokeDasharray="2 2" />
+                          <circle cx="48" cy="46" r="21" fill="none" stroke="#22C55E" strokeWidth="6" />
+                          <line x1="63" y1="61" x2="78" y2="76" stroke="#22C55E" strokeWidth="7" strokeLinecap="round" />
+                          <path d="M 34 50 L 42 42 L 48 54 L 54 36 L 60 44" fill="none" stroke="#22C55E" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </div>
+                    ) : (
+                      <span className="text-slate-400">
+                        <HugeiconsIcon icon={s.icon} size={36} strokeWidth={1.5} />
+                      </span>
+                    )}
                   </div>
-                  <div className="text-slate-800 font-bold text-sm">{s.name}</div>
-                  <div className="text-slate-500 text-xs mt-1">{s.handle}</div>
-                  <div className="text-slate-400 text-xs mt-2 leading-snug">{s.desc}</div>
+                  <div className="text-slate-800 font-display font-black text-sm uppercase tracking-wide">{s.name}</div>
+                  <div className="text-slate-400 text-xs mt-1">{s.handle}</div>
+                  <div className="text-slate-500 text-xs mt-3 leading-relaxed">{s.desc}</div>
                 </div>
               ) : (
-                <a href={s.href} target="_blank" rel="noopener noreferrer"
-                  className="relative block bg-white border border-slate-200 rounded-2xl p-6 text-center transition-all hover:border-green-300 hover:bg-green-50 hover:scale-[1.02] duration-300">
-                  <div className="flex justify-center mb-3 text-green-600">
-                    <HugeiconsIcon icon={s.icon} size={36} strokeWidth={1.5} />
+                <a 
+                  href={s.href} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="relative block bg-white border-4 border-slate-800 rounded-3xl p-6 text-center shadow-[4px_4px_0px_0px_rgba(30,41,59,1)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all duration-200"
+                >
+                  <div className="flex justify-center mb-4">
+                    {s.name === 'Pump.fun' ? (
+                      <div className="w-10 h-10">
+                        <svg viewBox="0 0 100 100" className="w-full h-full">
+                          <rect x="25" y="15" width="50" height="70" rx="25" fill="#22c55e" stroke="#1e293b" strokeWidth="5.5" transform="rotate(-30 50 50)" />
+                          <circle cx="43" cy="45" r="5.5" fill="#1e293b" />
+                          <circle cx="57" cy="45" r="5.5" fill="#1e293b" />
+                          <path d="M 42 56 Q 50 64 58 56" fill="none" stroke="#1e293b" strokeWidth="6" strokeLinecap="round" />
+                        </svg>
+                      </div>
+                    ) : s.name === 'DexScreener' ? (
+                      <div className="w-10 h-10">
+                        <svg viewBox="0 0 100 100" className="w-full h-full">
+                          <circle cx="50" cy="50" r="44" fill="#0d150d" stroke="#1E293B" strokeWidth="5.5" />
+                          <line x1="25" y1="50" x2="75" y2="50" stroke="#1b2e1b" strokeWidth="2.5" strokeDasharray="2 2" />
+                          <line x1="50" y1="25" x2="50" y2="75" stroke="#1b2e1b" strokeWidth="2.5" strokeDasharray="2 2" />
+                          <circle cx="48" cy="46" r="21" fill="none" stroke="#22C55E" strokeWidth="6" />
+                          <line x1="63" y1="61" x2="78" y2="76" stroke="#22C55E" strokeWidth="7" strokeLinecap="round" />
+                          <path d="M 34 50 L 42 42 L 48 54 L 54 36 L 60 44" fill="none" stroke="#22C55E" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </div>
+                    ) : (
+                      <span className="text-green-600">
+                        <HugeiconsIcon icon={s.icon} size={36} strokeWidth={1.5} />
+                      </span>
+                    )}
                   </div>
-                  <div className="text-slate-800 font-bold text-sm">{s.name}</div>
+                  <div className="text-slate-800 font-display font-black text-sm uppercase tracking-wide">{s.name}</div>
                   <div className="text-slate-500 text-xs mt-1">{s.handle}</div>
-                  <div className="text-slate-400 text-xs mt-2 leading-snug">{s.desc}</div>
+                  <div className="text-slate-600 text-xs mt-3 leading-relaxed">{s.desc}</div>
                 </a>
               )}
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Banner */}
+        {/* Lobby Deck Banner */}
         <motion.div
           initial={{ opacity: 0, scale: 0.96, y: 20 }}
           animate={inView ? { opacity: 1, scale: 1, y: 0 } : {}}
           transition={{ type: 'spring', stiffness: 90, damping: 15, delay: 0.3 }}
-          className="flex flex-col sm:flex-row items-center justify-between gap-6 bg-green-500/10 border border-green-200 rounded-3xl px-7 py-8 shadow-lg shadow-green-500/5"
+          className="flex flex-col sm:flex-row items-center justify-between gap-6 bg-green-500/10 border-4 border-slate-800 rounded-3xl px-7 py-8 shadow-[8px_8px_0px_0px_rgba(30,41,59,1)]"
         >
-          <div className="text-center sm:text-left">
-            <h3 className="font-display text-2xl sm:text-3xl font-bold text-slate-800 mb-1">Ready to join the party?</h3>
-            <p className="text-slate-650 text-sm">The sweetest community is forming. Get in before the bear starts dancing.</p>
+          <div className="text-center sm:text-left select-none">
+            <h3 className="font-display text-2xl sm:text-3xl font-black text-slate-800 mb-1 uppercase tracking-wide">Ready to join the party?</h3>
+            <p className="text-slate-655 text-sm">The sweetest community is forming. Get in before the bear starts dancing.</p>
           </div>
-          <div className="flex flex-col sm:flex-row gap-3 shrink-0 w-full sm:w-auto">
-            {/* ← Replace href="#" and remove `disabled` when X account is ready */}
-            <button disabled className="flex items-center justify-center gap-2 bg-slate-100 border border-slate-200 text-slate-500 font-bold px-5 py-3 rounded-xl text-sm cursor-not-allowed w-full sm:w-auto">
-              <HugeiconsIcon icon={NewTwitterIcon} size={16} strokeWidth={2} />
-              Follow on X — Coming Soon
-            </button>
-            <button disabled className="flex items-center justify-center gap-2 bg-sky-50 border border-sky-200 text-sky-600/60 font-bold px-5 py-3 rounded-xl text-sm cursor-not-allowed w-full sm:w-auto">
-              <HugeiconsIcon icon={TelegramIcon} size={16} strokeWidth={2} />
-              Join Telegram — Coming Soon
-            </button>
+          <div className="flex flex-col sm:flex-row gap-4 shrink-0 w-full sm:w-auto">
+            <a
+              href="https://x.com/gummimeme"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 bg-slate-800 border-2 border-slate-800 text-white hover:bg-slate-900 font-display font-black px-6 py-3.5 rounded-2xl text-xs uppercase tracking-wider transition-all shadow-[2px_2px_0px_0px_rgba(30,41,59,1)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5"
+            >
+              <HugeiconsIcon icon={NewTwitterIcon} size={16} strokeWidth={2.5} />
+              Follow on X
+            </a>
+            <a 
+              href="#"
+              className="flex items-center justify-center gap-2 bg-[#0088cc] border-2 border-slate-800 text-white hover:bg-[#0077b5] font-display font-black px-6 py-3.5 rounded-2xl text-xs uppercase tracking-wider transition-all shadow-[2px_2px_0px_0px_rgba(30,41,59,1)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5"
+            >
+              <HugeiconsIcon icon={TelegramIcon} size={16} strokeWidth={2.5} />
+              Join Telegram
+            </a>
           </div>
         </motion.div>
       </div>

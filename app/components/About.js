@@ -10,23 +10,20 @@ import {
   DiamondIcon
 } from '@hugeicons/core-free-icons';
 
-/* Note: gummi-mascot-standing.png was not found in the assets folder.
-   Using gummi-mascot-hero.png (standing/pointing pose) as the closest match. */
-
 const tokenDetails = [
   { label: 'Name',     value: 'Gummibär'  },
   { label: 'Ticker',   value: '$GUMMI'    },
   { label: 'Chain',    value: 'Solana'    },
   { label: 'Platform', value: 'Pump.fun'  },
   { label: 'Type',     value: 'Meme Coin' },
-  { label: 'Status',   value: '🔜 2026'   },
+  { label: 'Status',   value: 'Soon'      },
 ];
 
 const bullets = [
   { icon: LollipopIcon, title: 'Pure Nostalgia',  desc: 'Born from the sweetest internet memory. Zero utility. 100% vibes.', color: 'text-green-600' },
-  { icon: FlashIcon, title: 'Built on Solana', desc: 'Lightning-fast, low fees. Your transactions go zoom zoom.', color: 'text-yellow-600' },
-  { icon: MusicNote01Icon, title: 'For the Culture', desc: 'A love letter to an era when the internet was actually fun.', color: 'text-green-500' },
-  { icon: DiamondIcon, title: 'Community First', desc: 'No insider deals. No roadmap. Just bears having a good time.', color: 'text-emerald-600' },
+  { icon: FlashIcon, title: 'Speed Hacks', desc: 'Lightning-fast transaction speed. Low gas fees. Zoom zoom.', color: 'text-yellow-600' },
+  { icon: MusicNote01Icon, title: 'Nostalgia Aura', desc: 'A love letter to an era when the internet was actually fun.', color: 'text-green-500' },
+  { icon: DiamondIcon, title: 'HODL Vibe', desc: 'No insider deals. No roadmap. Just bears having a good time.', color: 'text-emerald-600' },
 ];
 
 export default function About() {
@@ -51,34 +48,79 @@ export default function About() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6" ref={ref}>
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16 justify-center">
 
-          {/* Mascot — PNG with alpha, no white box */}
+          {/* LEFT Column: RPG Mascot Sprite Box */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
             animate={inView ? { opacity: 1, scale: 1, rotate: 0 } : {}}
             transition={{ type: 'spring', stiffness: 90, damping: 15 }}
-            className="flex-1 flex justify-center order-1"
+            className="flex-1 flex justify-center order-1 w-full max-w-[380px]"
           >
-            <div className="relative">
-              {/* Green glow behind mascot */}
-              <div className="absolute inset-0 -m-12 bg-green-400/8 rounded-full blur-3xl animate-pulse-glow" />
-              <motion.div
-                animate={{ y: [0, -12, 0] }}
-                transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
-              >
-                <Image
-                  src="/gummi-mascot-hero.png"
-                  alt="Gummibär"
-                  width={400}
-                  height={600}
-                  className="relative z-10 w-52 sm:w-64 lg:w-80 h-auto object-contain drop-shadow-2xl"
-                />
-              </motion.div>
+            <div className="relative w-full bg-slate-50 border-4 border-slate-800 rounded-3xl p-5 shadow-[8px_8px_0px_0px_rgba(30,41,59,1)] flex flex-col items-center gap-4">
+              {/* Header badge */}
+              <div className="bg-slate-800 text-white text-[10px] font-black px-3 py-1 rounded-md uppercase tracking-wider select-none">
+                CHARACTER SELECT
+              </div>
+              
+              {/* Mascot Image wrapper */}
+              <div className="relative flex items-center justify-center h-56 w-full">
+                <div className="absolute inset-0 bg-green-500/5 rounded-full blur-2xl animate-pulse-glow pointer-events-none" />
+                <motion.div
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
+                >
+                  <Image
+                    src="/gummi-mascot-hero.png"
+                    alt="Gummibär character model"
+                    width={180}
+                    height={270}
+                    className="relative z-10 w-40 h-auto object-contain drop-shadow-2xl"
+                  />
+                </motion.div>
+              </div>
+
+              {/* RPG Stats list */}
+              <div className="w-full space-y-3 pt-3 border-t-2 border-dashed border-slate-200">
+                <div className="flex justify-between items-center text-[10px] font-black text-slate-500 select-none">
+                  <span>NAME: GUMMIBÄR</span>
+                  <span>LVL: 99</span>
+                </div>
+                
+                <div>
+                  <div className="flex justify-between text-[9px] font-black text-slate-600 mb-0.5 uppercase tracking-wide select-none">
+                    <span>HP (VIBES)</span>
+                    <span>9999/9999</span>
+                  </div>
+                  <div className="w-full h-2.5 bg-slate-200 border-2 border-slate-800 rounded-full overflow-hidden p-0.5">
+                    <div className="h-full bg-green-500 rounded-full w-full" />
+                  </div>
+                </div>
+
+                <div>
+                  <div className="flex justify-between text-[9px] font-black text-slate-600 mb-0.5 uppercase tracking-wide select-none">
+                    <span>MANA (SOUND)</span>
+                    <span>888/888</span>
+                  </div>
+                  <div className="w-full h-2.5 bg-slate-200 border-2 border-slate-800 rounded-full overflow-hidden p-0.5">
+                    <div className="h-full bg-blue-500 rounded-full w-[90%]" />
+                  </div>
+                </div>
+
+                <div>
+                  <div className="flex justify-between text-[9px] font-black text-slate-600 mb-0.5 uppercase tracking-wide select-none">
+                    <span>NOSTALGIA SPEED</span>
+                    <span>MAX</span>
+                  </div>
+                  <div className="w-full h-2.5 bg-slate-200 border-2 border-slate-800 rounded-full overflow-hidden p-0.5">
+                    <div className="h-full bg-yellow-500 rounded-full w-full animate-pulse" />
+                  </div>
+                </div>
+              </div>
             </div>
           </motion.div>
 
-          {/* Copy Container */}
+          {/* RIGHT Column: Character Stats & Perks */}
           <motion.div
             initial="hidden"
             animate={inView ? "show" : "hidden"}
@@ -90,7 +132,7 @@ export default function About() {
                 }
               }
             }}
-            className="flex-1 order-2"
+            className="flex-1 order-2 w-full"
           >
             <motion.div
               variants={{
@@ -98,10 +140,9 @@ export default function About() {
                 show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100, damping: 15 } }
               }}
             >
-              <span className="text-green-600 text-xs font-bold uppercase tracking-widest">What is this thing?</span>
+              <span className="text-green-600 text-xs font-bold uppercase tracking-widest">Profile details</span>
               <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-800 mt-2 mb-5">
-                About{' '}
-                <span className="text-green-600">$GUMMI</span>
+                About <span className="text-green-600">$GUMMI</span>
               </h2>
               <p className="text-slate-600 text-base sm:text-lg leading-relaxed mb-7">
                 $GUMMI is a 100% fan-made meme coin on Solana, inspired by the beloved Gummibär
@@ -110,26 +151,26 @@ export default function About() {
               </p>
             </motion.div>
 
-            {/* Token info */}
+            {/* Inventory Attributes Grid */}
             <motion.div
               variants={{
                 hidden: { opacity: 0, y: 20 },
                 show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100, damping: 15 } }
               }}
-              className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 mb-7"
+              className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-7"
             >
               {tokenDetails.map((d) => (
                 <div
                   key={d.label}
-                  className="bg-green-50/50 border border-green-100 rounded-xl p-3 hover:border-green-300 hover:bg-green-50 hover:shadow-md hover:shadow-green-500/5 backdrop-blur-sm transition-all"
+                  className="bg-white border-2 border-slate-800 rounded-2xl p-3 shadow-[4px_4px_0px_0px_rgba(30,41,59,1)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all cursor-default select-none"
                 >
-                  <div className="text-slate-400 text-xs uppercase tracking-wider">{d.label}</div>
-                  <div className="text-slate-800 font-bold text-sm mt-0.5">{d.value}</div>
+                  <div className="text-slate-400 text-[9px] font-black uppercase tracking-wider">{d.label}</div>
+                  <div className="text-slate-800 font-display font-black text-xs uppercase tracking-wide mt-0.5">{d.value}</div>
                 </div>
               ))}
             </motion.div>
 
-            {/* Bullets */}
+            {/* Active Skills Bullets */}
             <motion.div
               variants={{
                 hidden: { opacity: 0, y: 20 },
@@ -138,18 +179,22 @@ export default function About() {
               className="grid grid-cols-1 sm:grid-cols-2 gap-4"
             >
               {bullets.map((b) => (
-                <div key={b.title} className="flex gap-3 items-start hover:translate-x-1 transition-transform duration-300">
-                  <span className={`shrink-0 mt-0.5 ${b.color}`}>
-                    <HugeiconsIcon icon={b.icon} size={20} strokeWidth={2} />
+                <div 
+                  key={b.title} 
+                  className="bg-white border-2 border-slate-800 rounded-2xl p-4 shadow-[4px_4px_0px_0px_rgba(30,41,59,1)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all flex gap-3.5 items-start"
+                >
+                  <span className={`shrink-0 p-2 rounded-xl border border-slate-200 bg-slate-50 ${b.color}`}>
+                    <HugeiconsIcon icon={b.icon} size={20} strokeWidth={2.5} />
                   </span>
                   <div>
-                    <div className="text-slate-800 font-bold text-sm">{b.title}</div>
-                    <div className="text-slate-500 text-xs leading-snug mt-0.5">{b.desc}</div>
+                    <div className="text-slate-800 font-display font-black text-sm uppercase tracking-wide">{b.title}</div>
+                    <div className="text-slate-500 text-xs leading-normal mt-1">{b.desc}</div>
                   </div>
                 </div>
               ))}
             </motion.div>
           </motion.div>
+
         </div>
       </div>
     </section>
