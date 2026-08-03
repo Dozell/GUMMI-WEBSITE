@@ -17,7 +17,7 @@ const navLinks = [
 
 const socialLinks = [
   { name: 'X / Twitter', href: 'https://x.com/gummimeme', icon: NewTwitterIcon },
-  { name: 'Telegram', href: '#', icon: TelegramIcon },
+  { name: 'Telegram', href: 'https://t.me/gummimeme', icon: TelegramIcon },
   { name: 'Pump.fun', href: '#', icon: null },
   { name: 'DexScreener', href: '#', icon: null },
 ];
@@ -54,6 +54,8 @@ export default function Footer() {
                 <a
                   key={idx}
                   href={s.href}
+                  target={s.href.startsWith('http') ? "_blank" : undefined}
+                  rel={s.href.startsWith('http') ? "noopener noreferrer" : undefined}
                   className="w-9 h-9 rounded-xl bg-white border-2 border-slate-800 text-slate-800 hover:bg-green-500 hover:text-slate-950 flex items-center justify-center transition-all shadow-[2px_2px_0px_0px_rgba(30,41,59,1)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5"
                   title={s.name}
                 >

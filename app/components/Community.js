@@ -11,7 +11,7 @@ import BrandLockup from './BrandLockup';
 
 const socials = [
   { name: 'X / Twitter', handle: '@gummimeme',     icon: NewTwitterIcon,  desc: 'Memes, updates, and bear energy.',  border: 'border-slate-800', bg: 'bg-white', href: 'https://x.com/gummimeme', soon: false },
-  { name: 'Telegram',    handle: 't.me/GummiCoin',  icon: TelegramIcon, desc: 'The main community chat.',          border: 'border-slate-800', bg: 'bg-white', href: '#', soon: false },
+  { name: 'Telegram',    handle: 't.me/gummimeme',  icon: TelegramIcon, desc: 'The main community chat.',          border: 'border-slate-800', bg: 'bg-white', href: 'https://t.me/gummimeme', soon: false },
   { name: 'Pump.fun',    handle: 'Buy $GUMMI',       icon: null,           desc: 'Official launch page.',             border: 'border-slate-800', bg: 'bg-white', href: '#', soon: false },
   { name: 'DexScreener', handle: 'Track $GUMMI',     icon: null,           desc: 'Watch the chart go.',               border: 'border-slate-800', bg: 'bg-white', href: '#', soon: false },
 ];
@@ -186,7 +186,9 @@ export default function Community() {
               Follow on X
             </a>
             <a 
-              href="#"
+              href="https://t.me/gummimeme"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 bg-[#0088cc] border-2 border-slate-800 text-white hover:bg-[#0077b5] font-display font-black px-6 py-3.5 rounded-2xl text-xs uppercase tracking-wider transition-all shadow-[2px_2px_0px_0px_rgba(30,41,59,1)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5"
             >
               <HugeiconsIcon icon={TelegramIcon} size={16} strokeWidth={2.5} />
