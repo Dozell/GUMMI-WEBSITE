@@ -1,14 +1,25 @@
 'use client';
 import Image from 'next/image';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { HugeiconsIcon } from '@hugeicons/react';
 import {
   ShoppingCart01Icon,
   TelegramIcon,
-  AlertCircleIcon
+  AlertCircleIcon,
+  Copy01Icon,
+  CheckmarkCircle01Icon
 } from '@hugeicons/core-free-icons';
 
 export default function Hero() {
+  const [copied, setCopied] = useState(false);
+  const contractAddress = "***";
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(contractAddress);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <section
@@ -82,6 +93,46 @@ export default function Hero() {
               <HugeiconsIcon icon={TelegramIcon} size={20} strokeWidth={2.5} />
               Join Community
             </a>
+          </motion.div>
+
+          {/* Copyable Contract Address (CA) */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.68, duration: 0.6 }}
+            className="w-full max-w-lg mb-6"
+          >
+            <div className="relative flex items-center justify-between gap-3 bg-black/40 border border-white/10 hover:border-green-500/30 rounded-2xl p-3.5 backdrop-blur-sm transition-all group">
+              <div className="flex items-center gap-2.5 overflow-hidden">
+                {/* Active indicator dot */}
+                <span className="relative flex h-2.5 w-2.5 shrink-0">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+                </span>
+                <div className="flex flex-col text-left overflow-hidden">
+                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none mb-1.5">Contract Address (Solana)</span>
+                  <span className="text-white/95 text-xs sm:text-sm font-mono font-bold tracking-wide truncate">
+                    {contractAddress}
+                  </span>
+                </div>
+              </div>
+              
+              <button
+                onClick={handleCopy}
+                className={`flex items-center gap-1.5 shrink-0 px-4 py-2 rounded-xl text-xs font-bold transition-all duration-300 cursor-pointer ${
+                  copied
+                    ? 'bg-green-500 text-slate-950 font-black shadow-[0_0_15px_rgba(34,197,94,0.4)] border-transparent'
+                    : 'bg-white/10 hover:bg-[#c5ff55] text-white hover:text-slate-950 border border-white/10 hover:border-transparent'
+                }`}
+              >
+                <HugeiconsIcon
+                  icon={copied ? CheckmarkCircle01Icon : Copy01Icon}
+                  size={14}
+                  strokeWidth={2.5}
+                />
+                {copied ? 'Copied!' : 'Copy CA'}
+              </button>
+            </div>
           </motion.div>
 
           {/* Disclaimer strip */}
