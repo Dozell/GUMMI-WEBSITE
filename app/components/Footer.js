@@ -18,8 +18,8 @@ const navLinks = [
 const socialLinks = [
   { name: 'X / Twitter', href: 'https://x.com/gummimeme', icon: NewTwitterIcon },
   { name: 'Telegram', href: 'https://t.me/gummimeme', icon: TelegramIcon },
-  { name: 'Pump.fun', href: '#', icon: null },
-  { name: 'DexScreener', href: '#', icon: null },
+  { name: 'Pump.fun', href: 'https://pump.fun/coin/DTzVLti4boYm5TZjA2zDNL8EGqH44VsMurVxYTNxpump', icon: null },
+  { name: 'DexScreener', href: 'https://dexscreener.com/solana/DTzVLti4boYm5TZjA2zDNL8EGqH44VsMurVxYTNxpump', icon: null },
 ];
 
 export default function Footer() {
