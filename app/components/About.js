@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import { useRef } from 'react';
+import { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { HugeiconsIcon } from '@hugeicons/react';
 import {
@@ -15,8 +15,8 @@ const tokenDetails = [
   { label: 'Ticker',   value: '$GUMMI'    },
   { label: 'Chain',    value: 'Solana'    },
   { label: 'Platform', value: 'Pump.fun'  },
-  { label: 'Type',     value: 'Meme Coin' },
-  { label: 'Status',   value: 'Soon'      },
+  { label: 'CA',       value: 'DTzVLti4boYm5TZjA2zDNL8EGqH44VsMurVxYTNxpump' },
+  { label: 'Status',   value: 'Live'      },
 ];
 
 const bullets = [
@@ -29,6 +29,16 @@ const bullets = [
 export default function About() {
   const ref   = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
+  const [copied, setCopied] = useState(false);
+
+  const contractAddress = "DTzVLti4boYm5TZjA2zDNL8EGqH44VsMurVxYTNxpump";
+  const displayCA = `${contractAddress.slice(0, 6)}...${contractAddress.slice(-4)}`;
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(contractAddress);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <section id="about" className="relative py-20 sm:py-28 bg-white overflow-hidden">
@@ -159,15 +169,32 @@ export default function About() {
               }}
               className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-7"
             >
-              {tokenDetails.map((d) => (
-                <div
-                  key={d.label}
-                  className="bg-white border-2 border-slate-800 rounded-2xl p-3 shadow-[4px_4px_0px_0px_rgba(30,41,59,1)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all cursor-default select-none"
-                >
-                  <div className="text-slate-400 text-[9px] font-black uppercase tracking-wider">{d.label}</div>
-                  <div className="text-slate-800 font-display font-black text-xs uppercase tracking-wide mt-0.5">{d.value}</div>
-                </div>
-              ))}
+              {tokenDetails.map((d) => {
+                const isCA = d.label === 'CA';
+                return (
+                  <div
+                    key={d.label}
+                    onClick={isCA ? handleCopy : undefined}
+                    className={`bg-white border-2 border-slate-800 rounded-2xl p-3 shadow-[4px_4px_0px_0px_rgba(30,41,59,1)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all select-none ${
+                      isCA ? 'cursor-pointer border-green-500/80 hover:bg-green-50/50' : 'cursor-default'
+                    }`}
+                  >
+                    <div className="text-slate-400 text-[9px] font-black uppercase tracking-wider flex justify-between items-center">
+                      <span>{d.label}</span>
+                      {isCA && (
+                        <span className="text-[8px] text-green-600 font-bold uppercase tracking-normal">
+                          {copied ? 'Copied!' : 'Copy'}
+                        </span>
+                      )}
+                    </div>
+                    <div className={`font-display font-black text-xs uppercase tracking-wide mt-0.5 ${
+                      isCA ? 'text-green-600' : 'text-slate-800'
+                    }`}>
+                      {isCA ? (copied ? 'Copied!' : displayCA) : d.value}
+                    </div>
+                  </div>
+                );
+              })}
             </motion.div>
 
             {/* Active Skills Bullets */}

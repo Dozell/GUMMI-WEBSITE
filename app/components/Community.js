@@ -12,8 +12,8 @@ import BrandLockup from './BrandLockup';
 const socials = [
   { name: 'X / Twitter', handle: '@gummimeme',     icon: NewTwitterIcon,  desc: 'Memes, updates, and bear energy.',  border: 'border-slate-800', bg: 'bg-white', href: 'https://x.com/gummimeme', soon: false },
   { name: 'Telegram',    handle: 't.me/gummimeme',  icon: TelegramIcon, desc: 'The main community chat.',          border: 'border-slate-800', bg: 'bg-white', href: 'https://t.me/gummimeme', soon: false },
-  { name: 'Pump.fun',    handle: 'Buy $GUMMI',       icon: null,           desc: 'Official launch page.',             border: 'border-slate-800', bg: 'bg-white', href: '#', soon: false },
-  { name: 'DexScreener', handle: 'Track $GUMMI',     icon: null,           desc: 'Watch the chart go.',               border: 'border-slate-800', bg: 'bg-white', href: '#', soon: false },
+  { name: 'Pump.fun',    handle: 'Buy $GUMMI',       icon: null,           desc: 'Official launch page.',             border: 'border-slate-800', bg: 'bg-white', href: 'https://pump.fun/coin/DTzVLti4boYm5TZjA2zDNL8EGqH44VsMurVxYTNxpump', soon: false },
+  { name: 'DexScreener', handle: 'Track $GUMMI',     icon: null,           desc: 'Watch the chart go.',               border: 'border-slate-800', bg: 'bg-white', href: 'https://dexscreener.com/solana/DTzVLti4boYm5TZjA2zDNL8EGqH44VsMurVxYTNxpump', soon: false },
 ];
 
 export default function Community() {
@@ -50,7 +50,7 @@ export default function Community() {
               Join the Gummi Gang
             </h2>
             <p className="text-slate-655 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
-              Be part of the sweetest community in crypto. Links are coming soon. The bears are still setting things up.
+              Be part of the sweetest community in crypto. Follow our official links below to join the gang!
             </p>
           </motion.div>
         </div>

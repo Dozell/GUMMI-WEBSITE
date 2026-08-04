@@ -13,7 +13,8 @@ import {
 
 export default function Hero() {
   const [copied, setCopied] = useState(false);
-  const contractAddress = "***";
+  const contractAddress = "DTzVLti4boYm5TZjA2zDNL8EGqH44VsMurVxYTNxpump";
+  const displayAddress = `${contractAddress.slice(0, 6)}...${contractAddress.slice(-4)}`;
 
   const handleCopy = () => {
     navigator.clipboard.writeText(contractAddress);
@@ -76,16 +77,18 @@ export default function Hero() {
             transition={{ delay: 0.6, duration: 0.6 }}
             className="flex flex-col sm:flex-row gap-3.5 w-full sm:w-auto mb-8"
           >
-            <button
-              disabled
-              className="relative flex items-center justify-center gap-2 bg-white hover:bg-white/90 text-[#0d150d] font-extrabold px-8 py-4 rounded-full text-base cursor-not-allowed w-full sm:w-auto transition-all hover:scale-[1.02]"
+            <a
+              href="https://pump.fun/coin/DTzVLti4boYm5TZjA2zDNL8EGqH44VsMurVxYTNxpump"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative flex items-center justify-center gap-2 bg-white hover:bg-white/90 text-[#0d150d] font-extrabold px-8 py-4 rounded-full text-base w-full sm:w-auto transition-all hover:scale-[1.02]"
             >
               <HugeiconsIcon icon={ShoppingCart01Icon} size={20} strokeWidth={2.5} />
               Buy $GUMMI
-              <span className="absolute -top-2.5 -right-2.5 bg-yellow-400 text-[#0d150d] text-[9px] font-black px-2 py-0.5 rounded-full leading-none uppercase">
-                SOON
+              <span className="absolute -top-2.5 -right-2.5 bg-green-500 text-white text-[9px] font-black px-2 py-0.5 rounded-full leading-none uppercase animate-pulse">
+                LIVE
               </span>
-            </button>
+            </a>
             <a
               href="#community"
               className="flex items-center justify-center gap-2 bg-[#c5ff55] hover:bg-[#b0f038] text-[#0d150d] font-extrabold px-8 py-4 rounded-full text-base transition-all hover:scale-[1.02] w-full sm:w-auto"
@@ -112,7 +115,7 @@ export default function Hero() {
                 <div className="flex flex-col text-left overflow-hidden">
                   <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none mb-1.5">Contract Address (Solana)</span>
                   <span className="text-white/95 text-xs sm:text-sm font-mono font-bold tracking-wide truncate">
-                    {contractAddress}
+                    {displayAddress}
                   </span>
                 </div>
               </div>

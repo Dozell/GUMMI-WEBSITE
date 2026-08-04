@@ -139,17 +139,22 @@ export default function Navbar() {
             </a>
 
             {/* Buy CTA */}
-            <span className={`relative inline-flex items-center gap-2 font-bold px-6 py-2.5 rounded-full text-sm cursor-not-allowed select-none transition-colors shadow-md ${
-              scrolled
-                ? 'bg-green-600 hover:bg-green-500 text-white'
-                : 'bg-white hover:bg-white/90 text-[#0d150d]'
-            }`}>
+            <a
+              href="https://pump.fun/coin/DTzVLti4boYm5TZjA2zDNL8EGqH44VsMurVxYTNxpump"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`relative inline-flex items-center gap-2 font-bold px-6 py-2.5 rounded-full text-sm select-none transition-all shadow-md hover:scale-[1.02] ${
+                scrolled
+                  ? 'bg-green-600 hover:bg-green-500 text-white'
+                  : 'bg-white hover:bg-white/90 text-[#0d150d]'
+              }`}
+            >
               <HugeiconsIcon icon={ShoppingCart01Icon} size={16} strokeWidth={2.5} />
               Buy $GUMMI
-              <span className="absolute -top-2 -right-2 bg-yellow-400 text-[#0d150d] text-[9px] font-black px-2 py-0.5 rounded-full leading-none uppercase">
-                SOON
+              <span className="absolute -top-2 -right-2 bg-green-500 text-white text-[9px] font-black px-2 py-0.5 rounded-full leading-none uppercase animate-pulse">
+                LIVE
               </span>
-            </span>
+            </a>
           </div>
 
           {/* Hamburger */}
@@ -187,10 +192,15 @@ export default function Navbar() {
                     {l.label}
                   </a>
                 ))}
-                <span className="mt-4 flex items-center justify-center gap-2 bg-green-600 text-white font-bold px-4 py-3 rounded-xl text-sm cursor-not-allowed">
+                <a
+                  href="https://pump.fun/coin/DTzVLti4boYm5TZjA2zDNL8EGqH44VsMurVxYTNxpump"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 flex items-center justify-center gap-2 bg-green-600 hover:bg-green-500 text-white font-bold px-4 py-3 rounded-xl text-sm transition-all"
+                >
                   <HugeiconsIcon icon={ShoppingCart01Icon} size={16} strokeWidth={2} />
-                  Buy $GUMMI — Coming Soon
-                </span>
+                  Buy $GUMMI (Live)
+                </a>
               </div>
             </motion.div>
           )}
