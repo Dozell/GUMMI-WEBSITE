@@ -272,8 +272,8 @@ export default function MemoryLane() {
           transition={{ type: 'spring', stiffness: 85, damping: 15, delay: 0.35 }}
           className="flex flex-col items-center mt-16 max-w-3xl mx-auto w-full"
         >
-          <h3 className="font-display font-black text-xl text-slate-800 mb-5 text-center flex items-center gap-2">
-            Watch the Original Legend
+          <h3 className="font-display font-black text-xl sm:text-2xl text-slate-800 mb-6 text-center max-w-2xl px-4 leading-relaxed">
+            3.9B views. 18 years later, the legendary green bear is back. <span className="text-green-600">Just Gummi. 🐻💚</span>
           </h3>
           <div className="w-full aspect-video rounded-3xl overflow-hidden border-4 border-slate-800 shadow-[8px_8px_0px_0px_rgba(30,41,59,1)]">
             <iframe
