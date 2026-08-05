@@ -23,15 +23,19 @@ function drawMeme({ canvas, imageSrc, topText, bottomText, bgColor }) {
   const W = CANVAS_SIZE;
   const H = CANVAS_SIZE;
 
-  ctx.clearRect(0, 0, W, H);
-  ctx.fillStyle = bgColor || '#000000';
-  ctx.fillRect(0, 0, W, H);
-
   const img = new window.Image();
-  img.crossOrigin = 'anonymous';
-  img.src = imageSrc;
+  
+  // Set crossOrigin ONLY for external links to prevent CORS issues on same-origin/data-URLs
+  if (imageSrc.startsWith('http') || imageSrc.startsWith('//')) {
+    img.crossOrigin = 'anonymous';
+  }
 
   img.onload = () => {
+    // Clear and draw background inside onload to prevent visual flickering
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = bgColor || '#000000';
+    ctx.fillRect(0, 0, W, H);
+
     // Scale image to fit, centered with some margin for text
     const scale = Math.min(W / img.width, (H * 0.72) / img.height);
     const iw = img.width  * scale;
@@ -83,6 +87,9 @@ function drawMeme({ canvas, imageSrc, topText, bottomText, bgColor }) {
     ctx.textAlign    = 'right';
     ctx.fillText('$GUMMI', W - 16, H - 10);
   };
+
+  // Define src AFTER setting onload to prevent race conditions in cached states
+  img.src = imageSrc;
 }
 
 export default function MemeCreator() {
